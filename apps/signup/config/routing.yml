@@ -1,6 +1,25 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+
+# Stepping logics
+signup_update:    
+  url: /:sf_culture/update.:sf_format
+  param: { module: stepping, action: update, sf_format: html}
+  requirements: { sf_method: put }
+
+signup_create:  
+  url: /:sf_culture/create
+  param: { module: stepping, action: create}
+  requirements: { sf_method: post }
+
+signup_form:
+  url: /:sf_culture/:action
+  param: { module: stepping}
+  requirements:    
+    sf_culture: (?:fr|en)
+
+
 # default rules
 homepage:
   url:   /

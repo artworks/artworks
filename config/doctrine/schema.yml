@@ -1,0 +1,875 @@
+AddressType:
+  connection: doctrine
+  tableName: address_type
+  columns:
+    idaddress_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    CustomersAddressList:
+      local: idaddress_type
+      foreign: fkidaddress_type
+      type: many
+Artists:
+  connection: doctrine
+  tableName: artists
+  columns:
+    idartists:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    name:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Artworks:
+      local: idartists
+      foreign: fkidartists
+      type: many
+ArtworkStyle:
+  connection: doctrine
+  tableName: artwork_style
+  columns:
+    idartwork_style:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Artworks:
+      local: idartwork_style
+      foreign: fkidartwork_style
+      type: many
+ArtworkType:
+  connection: doctrine
+  tableName: artwork_type
+  columns:
+    idartwork_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Artworks:
+      local: idartwork_type
+      foreign: fkidartwork_type
+      type: many
+Artworks:
+  connection: doctrine
+  tableName: artworks
+  columns:
+    idartworks:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidartists:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidartwork_style:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidartwork_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Artists:
+      local: fkidartists
+      foreign: idartists
+      type: one
+    ArtworkStyle:
+      local: fkidartwork_style
+      foreign: idartwork_style
+      type: one
+    ArtworkType:
+      local: fkidartwork_type
+      foreign: idartwork_type
+      type: one
+    ArtworksPrices:
+      local: idartworks
+      foreign: fkidartworksfromprices
+      type: many
+    Basket:
+      local: idartworks
+      foreign: fkidartworksfrombasket
+      type: many
+ArtworksPrices:
+  connection: doctrine
+  tableName: artworks_prices
+  columns:
+    idartworks_prices:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fkidcurrencyfromartworks:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidartworksfromprices:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    price:
+      type: decimal(15)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Currency:
+      local: fkidcurrencyfromartworks
+      foreign: idcurrency
+      type: one
+    Artworks:
+      local: fkidartworksfromprices
+      foreign: idartworks
+      type: one
+Basket:
+  connection: doctrine
+  tableName: basket
+  columns:
+    idbasket:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fkidcustomersfrombasket:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidbasket_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidartworksfrombasket:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Customers:
+      local: fkidcustomersfrombasket
+      foreign: idcustomers
+      type: one
+    BasketStatus:
+      local: fkidbasket_status
+      foreign: idbasket_status
+      type: one
+    Artworks:
+      local: fkidartworksfrombasket
+      foreign: idartworks
+      type: one
+    Orders:
+      local: idbasket
+      foreign: fkidbasket
+      type: many
+BasketStatus:
+  connection: doctrine
+  tableName: basket_status
+  columns:
+    idbasket_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Basket:
+      local: idbasket_status
+      foreign: fkidbasket_status
+      type: many
+Country:
+  connection: doctrine
+  tableName: country
+  columns:
+    idcountry:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkiddelivery_areas:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    DeliveryAreas:
+      local: fkiddelivery_areas
+      foreign: iddelivery_areas
+      type: one
+    Geolocation:
+      local: idcountry
+      foreign: fkidcountry
+      type: many
+Currency:
+  connection: doctrine
+  tableName: currency
+  columns:
+    idcurrency:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    ArtworksPrices:
+      local: idcurrency
+      foreign: fkidcurrencyfromartworks
+      type: many
+    DeliveryPricing:
+      local: idcurrency
+      foreign: fkidcurrencyfromdelivery
+      type: many
+CustomerStatus:
+  connection: doctrine
+  tableName: customer_status
+  columns:
+    idcustomer_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Customers:
+      local: idcustomer_status
+      foreign: fkidcustomer_status
+      type: many
+Customers:
+  connection: doctrine
+  tableName: customers
+  columns:
+    idcustomers:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    company:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dialing_code:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    email:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidgender:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidcustomer_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    name:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    phone:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    password:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    surname:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Gender:
+      local: fkidgender
+      foreign: idgender
+      type: one
+    CustomerStatus:
+      local: fkidcustomer_status
+      foreign: idcustomer_status
+      type: one
+    Basket:
+      local: idcustomers
+      foreign: fkidcustomersfrombasket
+      type: many
+    CustomersAddressList:
+      local: idcustomers
+      foreign: fkidcustomersfromaddresslist
+      type: many
+CustomersAddressList:
+  connection: doctrine
+  tableName: customers_address_list
+  columns:
+    idcustomers_address_list:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fkidgeolocationfromaddresslist:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidcustomersfromaddresslist:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidaddress_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Geolocation:
+      local: fkidgeolocationfromaddresslist
+      foreign: idgeolocation
+      type: one
+    Customers:
+      local: fkidcustomersfromaddresslist
+      foreign: idcustomers
+      type: one
+    AddressType:
+      local: fkidaddress_type
+      foreign: idaddress_type
+      type: one
+DeliveryAreas:
+  connection: doctrine
+  tableName: delivery_areas
+  columns:
+    iddelivery_areas:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fkiddelivery_pricing:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    DeliveryPricing:
+      local: fkiddelivery_pricing
+      foreign: iddelivery_pricing
+      type: one
+    Country:
+      local: iddelivery_areas
+      foreign: fkiddelivery_areas
+      type: many
+DeliveryPricing:
+  connection: doctrine
+  tableName: delivery_pricing
+  columns:
+    iddelivery_pricing:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    price:
+      type: decimal(15)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidcurrencyfromdelivery:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Currency:
+      local: fkidcurrencyfromdelivery
+      foreign: idcurrency
+      type: one
+    DeliveryAreas:
+      local: iddelivery_pricing
+      foreign: fkiddelivery_pricing
+      type: many
+    DeliveryPricingHistory:
+      local: iddelivery_pricing
+      foreign: fkiddelivery_pricingfromhistory
+      type: many
+DeliveryPricingHistory:
+  connection: doctrine
+  tableName: delivery_pricing_history
+  columns:
+    iddelivery_pricing_history:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    price:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkiddelivery_pricingfromhistory:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    DeliveryPricing:
+      local: fkiddelivery_pricingfromhistory
+      foreign: iddelivery_pricing
+      type: one
+Gender:
+  connection: doctrine
+  tableName: gender
+  columns:
+    idgender:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Customers:
+      local: idgender
+      foreign: fkidgender
+      type: many
+Geolocation:
+  connection: doctrine
+  tableName: geolocation
+  columns:
+    idgeolocation:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fkidcountry:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    json:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    xml:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Country:
+      local: fkidcountry
+      foreign: idcountry
+      type: one
+    CustomersAddressList:
+      local: idgeolocation
+      foreign: fkidgeolocationfromaddresslist
+      type: many
+    Prospects:
+      local: idgeolocation
+      foreign: fkidgeolocationfromprospect
+      type: many
+OrderStatus:
+  connection: doctrine
+  tableName: order_status
+  columns:
+    idorder_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Orders:
+      local: idorder_status
+      foreign: fkidorder_status
+      type: many
+OrderType:
+  connection: doctrine
+  tableName: order_type
+  columns:
+    idorder_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    label:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Orders:
+      local: idorder_type
+      foreign: fkidorder_type
+      type: many
+Orders:
+  connection: doctrine
+  tableName: orders
+  columns:
+    idorders:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    fkidorder_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidorder_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidbasket:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    OrderStatus:
+      local: fkidorder_status
+      foreign: idorder_status
+      type: one
+    OrderType:
+      local: fkidorder_type
+      foreign: idorder_type
+      type: one
+    Basket:
+      local: fkidbasket
+      foreign: idbasket
+      type: one
+OrdersHistory:
+  connection: doctrine
+  tableName: orders_history
+  columns:
+    id:
+      type: integer(8)
+      autoincrement: true
+      primary: true
+    idorders:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    fkidorder_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidorder_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidbasket:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+Prospects:
+  connection: doctrine
+  tableName: prospects
+  columns:
+    idprospects:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: true
+      autoincrement: true
+    company:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    dialing_code:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    email:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidgeolocationfromprospect:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    name:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    phone:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    surname:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    password:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    step:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+  relations:
+    Geolocation:
+      local: fkidgeolocationfromprospect
+      foreign: idgeolocation
+      type: one
