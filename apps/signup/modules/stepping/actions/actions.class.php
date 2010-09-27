@@ -105,7 +105,10 @@ class steppingActions extends sfActions
 						->setFrom('from@artworks.com')
 						->setTo($form->getObject()->getEmail())
 						->setSubject('Subject')
-						->setBody($this->getPartial('emails/endSignupMail', array()));
+						->setBody($this->getPartial('emails/endSignupMail', array(
+									'password'=>$request->getPostParameter('prospects[password]'),
+									'email'=>$form->getEmail()
+									)));
 					
 					$this->getMailer()->send($message);
 				break;
