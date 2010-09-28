@@ -3,17 +3,26 @@
 
 
 # Stepping logics
-signup_update:    
+
+autoconnect_index:
+  url:   /autoconnect/:cryptuid/:hashcode/:crypttimelimit/:forwardurl
+  param:  { module: autoconnect, action: index}
+
+stepping_gotostep:
+  url:   /:sf_culture/gotostep/
+  param:  { module: stepping, action: gotoStep }
+
+stepping_update:    
   url: /:sf_culture/update.:sf_format
   param: { module: stepping, action: update, sf_format: html}
   requirements: { sf_method: put }
 
-signup_create:  
+stepping_create:  
   url: /:sf_culture/create
   param: { module: stepping, action: create}
   requirements: { sf_method: post }
 
-signup_form:
+stepping_form:
   url: /:sf_culture/:action
   param: { module: stepping}
   requirements:    

@@ -11,6 +11,16 @@
 class steppingActions extends sfActions
 {
 	
+	public function executeGotoStep(sfWebRequest $request)  {
+		$uid   = $this->getUser()->getAttribute('uid');
+		$this->getUser()->setAttribute('idprospects',$uid);
+		
+		$prospects = Doctrine::getTable('Prospects')->find($uid);
+		$this->getUser()->setAttribute('step',$prospects->getStep());
+		
+		$this->redirect("@stepping_form?action=step".$prospects->getStep());
+	}
+	
 	/**
 	 * Executes index action
 	 *
@@ -43,7 +53,33 @@ class steppingActions extends sfActions
 		$this->form = new ProspectsStep1ShortForm($this->prospect);		
 	}
 	
+	/**
+	* Executes step2 action
+	*
+	* @param sfRequest $request A request object
+	*/
+	public function executeStep2(sfWebRequest $request)
+	{
+		$this->stepCheck(2);
+		$this->form = new ProspectsStep2ShortForm($this->prospect);	
+	}
 	
+	/**
+	* Executes step3 action
+	*
+	* @param sfRequest $request A request object
+	*/
+	public function executeStep3(sfWebRequest $request)
+	{
+		$this->getUser()->setAttribute('step',0);
+		$this->stepCheck(3);
+	}
+	
+	/**
+	* Executes Create action which create a new Prospect entry
+	*
+	* @param sfRequest $request A request object
+	*/
 	public function executeCreate(sfWebRequest $request)
 	{	
 		$this->form = new ProspectsStep0ShortForm();
@@ -52,7 +88,11 @@ class steppingActions extends sfActions
 	}
 	
 
-	
+	/**
+	* Executes Update action which update an existing Prospect entry
+	*
+	* @param sfRequest $request A request object
+	*/
 	public function executeUpdate(sfWebRequest $request)
 	{
 		$this->redirectUnless($data = Doctrine::getTable('Prospects')->find($this->getUser()->getAttribute('idprospects')),'@errors_show?numero=3000');
@@ -70,9 +110,15 @@ class steppingActions extends sfActions
 		
 	} 
 	
+	/**
+	* Executes processForm which post a form 
+	*
+	* @param sfRequest $request A request object
+	* @param sfForm $form A form object
+	* 
+	*/
 	protected function processForm(sfWebRequest $request, sfForm $form)
-	{	
-		
+	{			
 
 		$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 		
@@ -84,23 +130,32 @@ class steppingActions extends sfActions
 				$form->getObject()->setStep($step_next);	
 			}
 			else{ $step_next = $form->step+1; }	
-				
-			
-			
+							
 			$form->save();	
-		
+			 $prospects_id_prospects = $form->getObject()->getIdProspects();
 			
+			
+			// Mail management from step0 to the last step
 			switch($form->step){
 				case 0:
+				
+				  // Mail with autoconnection link to last step entered
+				  $generated_url		= $this->getContext()->getRouting()->generate('stepping_gotostep', array(), $absolute = false);
+				
+				  $site_to_connect		= AccessSites::GetSecureConnexionURL($prospects_id_prospects,AccessSites::TimeOutLong,$generated_url);	
+			      $auto_connection_link	= AccessSites::SiteSignup.$site_to_connect->URL;
+					
 					$message = Swift_Message::newInstance()
 						->setFrom('from@artworks.com')
 						->setTo($form->getObject()->getEmail())
-						->setSubject('Subject')
-						->setBody($this->getPartial('emails/beginSignupMail', array()));
+						->setSubject('Subject')						
+						->setBody($this->getPartial('emails/beginSignupMail', array('auto_connection_link'=> $auto_connection_link)), 'text/html');
 					
 					$this->getMailer()->send($message);
 					break;
-				case 1:
+				case 3:
+				
+					// Mail with congratulations and signup report 
 					$message = Swift_Message::newInstance()
 						->setFrom('from@artworks.com')
 						->setTo($form->getObject()->getEmail())
@@ -108,16 +163,16 @@ class steppingActions extends sfActions
 						->setBody($this->getPartial('emails/endSignupMail', array(
 									'password'=>$request->getPostParameter('prospects[password]'),
 									'email'=>$form->getEmail()
-									)));
+									)), 'text/html');
 					
 					$this->getMailer()->send($message);
 				break;
 			}
 			
 			$this->getUser()->setAttribute('step', $step_next);	
-			$this->getUser()->setAttribute('idprospects',$form->getObject()->getIdProspects());	
+			$this->getUser()->setAttribute('idprospects',$prospects_id_prospects);	
 			
-			$this->redirect('@signup_form?action=step'.$step_next);
+			$this->redirect('@stepping_form?action=step'.$step_next);
 			
 		} 
 		
@@ -147,7 +202,7 @@ class steppingActions extends sfActions
 	protected function stepCheck($step)
 	{	
 		$this->redirectUnless($this->prospect = Doctrine_Core::getTable('Prospects')->find($this->getUser()->getAttribute('idprospects')),'@errors_show?numero=3000' ) ;
-		$this->redirectUnless($this->prospect->getStep() >= $step ,'@signup_form?action=step'.$this->prospect->getStep());		
+		$this->redirectUnless($this->prospect->getStep() >= $step ,'@stepping_form?action=step'.$this->prospect->getStep());		
 		$this->getUser()->setAttribute('step', $step);     	
 	}
 	

@@ -10,17 +10,20 @@ Doctrine_Manager::getInstance()->bindComponent('Country', 'doctrine');
  * @property integer $idcountry
  * @property string $label
  * @property integer $fkiddelivery_areas
+ * @property string $country_code
  * @property DeliveryAreas $DeliveryAreas
  * @property Doctrine_Collection $Geolocation
  * 
  * @method integer             getIdcountry()          Returns the current record's "idcountry" value
  * @method string              getLabel()              Returns the current record's "label" value
  * @method integer             getFkiddeliveryAreas()  Returns the current record's "fkiddelivery_areas" value
+ * @method string              getCountryCode()        Returns the current record's "country_code" value
  * @method DeliveryAreas       getDeliveryAreas()      Returns the current record's "DeliveryAreas" value
  * @method Doctrine_Collection getGeolocation()        Returns the current record's "Geolocation" collection
  * @method Country             setIdcountry()          Sets the current record's "idcountry" value
  * @method Country             setLabel()              Sets the current record's "label" value
  * @method Country             setFkiddeliveryAreas()  Sets the current record's "fkiddelivery_areas" value
+ * @method Country             setCountryCode()        Sets the current record's "country_code" value
  * @method Country             setDeliveryAreas()      Sets the current record's "DeliveryAreas" value
  * @method Country             setGeolocation()        Sets the current record's "Geolocation" collection
  * 
@@ -59,6 +62,15 @@ abstract class BaseCountry extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 4,
+             ));
+        $this->hasColumn('country_code', 'string', 45, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 45,
              ));
     }
 

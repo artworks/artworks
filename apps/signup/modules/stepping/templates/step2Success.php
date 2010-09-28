@@ -4,9 +4,13 @@
 	<input type="hidden" name="sf_method" value="put" />
 	<?php endif; ?>
 
-<?php echo $form['email']->renderLabel(); ?>
-<?php echo $form['email']->renderError(); ?>
-<?php echo $form['email']->render(); ?><br/>
+<?php echo $form['password']->renderLabel(); ?>
+<?php echo $form['password']->renderError(); ?>
+<?php echo $form['password']->render(); ?><br/>
+
+<?php echo $form['password_bis']->renderLabel(); ?>
+<?php echo $form['password_bis']->renderError(); ?>
+<?php echo $form['password_bis']->render(); ?><br/>
 
 <input type="submit"  value="<?php echo __('VALIDATE_SUBSCRIPTION', null, 'stepping');?>">
 

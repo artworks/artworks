@@ -19,6 +19,8 @@ abstract class BaseGeolocationForm extends BaseFormDoctrine
       'fkidcountry'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Country'), 'add_empty' => true)),
       'json'          => new sfWidgetFormTextarea(),
       'xml'           => new sfWidgetFormTextarea(),
+      'longitude'     => new sfWidgetFormInputText(),
+      'lattitude'     => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
@@ -26,6 +28,8 @@ abstract class BaseGeolocationForm extends BaseFormDoctrine
       'fkidcountry'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Country'), 'required' => false)),
       'json'          => new sfValidatorString(array('required' => false)),
       'xml'           => new sfValidatorString(array('required' => false)),
+      'longitude'     => new sfValidatorNumber(array('required' => false)),
+      'lattitude'     => new sfValidatorNumber(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('geolocation[%s]');

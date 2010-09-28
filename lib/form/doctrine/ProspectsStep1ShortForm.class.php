@@ -17,7 +17,10 @@ class ProspectsStep1ShortForm extends ProspectsForm
 	public function configure()
 	{	
 			
-		$this->useFields(array('password','company','name','surname','phone','dialing_code'));
+		$this->useFields(array('company','name','surname','phone','dialing_code'));
+			
+			
+		$this->widgetSchema['country'] = new sfWidgetFormI18nChoiceCountry(array('culture' => 'fr'));
 		
 		$this->validatorSchema['company']->setOption('required','true');
 		$this->validatorSchema['name']->setOption('required','true');
@@ -25,30 +28,7 @@ class ProspectsStep1ShortForm extends ProspectsForm
 		$this->validatorSchema['phone']->setOption('required','true');
 		$this->validatorSchema['dialing_code']->setOption('required','true');
 		
-		$this->widgetSchema['password']       = new sfWidgetFormInputPassword(array(),array('maxlength'=>'45'));
-		$this->widgetSchema['password_bis']   = new sfWidgetFormInputPassword(array(),array('maxlength'=>'45'));
-		
-		
-		$this->validatorSchema['password']     = new sfValidatorAnd(array(
-			new sfValidatorRegex(
-						array('pattern' =>'/^(\s+)?[\w-\#\/]+(\s+)?$/'),
-						array('invalid'=>'I18N_PASSWORD_NO_SPECIAL_CHARACTERS')),		
-					new sfValidatorString(
-						array('min_length' => 6,'max_length' => 45), 
-						array('min_length' => 'I18N_PASSWORD_MIN_LENGTH_ALERT',
-							'max_length' => 'I18N_PASSWORD_MAX_LENGTH_ALERT'
-							))),
-			array('halt_on_error' => true,'required' => true,'trim'=>true),
-			array('required'=>'I18N_PASSWORD_REQUIRED'	)			
-			);
-		
-		$this->validatorSchema['password_bis'] = new sfValidatorPass();
-		
-		
-		$this->validatorSchema->setPostValidator(
-			new sfValidatorSchemaCompare(
-					'password',"==",'password_bis',array(),
-					array('invalid' => 'I18N_CHECK_PASSWORD_EQUALITY')));
+		$this->validatorSchema['country'] = new sfValidatorPass();
 		
 		parent::configure();	
 

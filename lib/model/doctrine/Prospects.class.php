@@ -12,5 +12,9 @@
  */
 class Prospects extends BaseProspects
 {
-
+	public function setUp()
+	{
+		parent::setUp();
+		$this->actAs('Timestampable');
+	}
 }

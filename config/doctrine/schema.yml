@@ -279,6 +279,13 @@ Country:
       primary: false
       notnull: false
       autoincrement: false
+    country_code:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
   relations:
     DeliveryAreas:
       local: fkiddelivery_areas
@@ -629,6 +636,20 @@ Geolocation:
       primary: false
       notnull: false
       autoincrement: false
+    longitude:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    lattitude:
+      type: float()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
   relations:
     Country:
       local: fkidcountry
@@ -841,6 +862,13 @@ Prospects:
       notnull: false
       autoincrement: false
     password:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    password_hash:
       type: string(45)
       fixed: false
       unsigned: false

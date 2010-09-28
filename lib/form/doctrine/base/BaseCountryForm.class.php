@@ -18,12 +18,14 @@ abstract class BaseCountryForm extends BaseFormDoctrine
       'idcountry'          => new sfWidgetFormInputHidden(),
       'label'              => new sfWidgetFormInputText(),
       'fkiddelivery_areas' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('DeliveryAreas'), 'add_empty' => true)),
+      'country_code'       => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'idcountry'          => new sfValidatorChoice(array('choices' => array($this->getObject()->get('idcountry')), 'empty_value' => $this->getObject()->get('idcountry'), 'required' => false)),
       'label'              => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'fkiddelivery_areas' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('DeliveryAreas'), 'required' => false)),
+      'country_code'       => new sfValidatorString(array('max_length' => 45, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('country[%s]');

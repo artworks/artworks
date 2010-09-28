@@ -11,6 +11,8 @@ Doctrine_Manager::getInstance()->bindComponent('Geolocation', 'doctrine');
  * @property integer $fkidcountry
  * @property string $json
  * @property string $xml
+ * @property float $longitude
+ * @property float $lattitude
  * @property Country $Country
  * @property Doctrine_Collection $CustomersAddressList
  * @property Doctrine_Collection $Prospects
@@ -19,6 +21,8 @@ Doctrine_Manager::getInstance()->bindComponent('Geolocation', 'doctrine');
  * @method integer             getFkidcountry()          Returns the current record's "fkidcountry" value
  * @method string              getJson()                 Returns the current record's "json" value
  * @method string              getXml()                  Returns the current record's "xml" value
+ * @method float               getLongitude()            Returns the current record's "longitude" value
+ * @method float               getLattitude()            Returns the current record's "lattitude" value
  * @method Country             getCountry()              Returns the current record's "Country" value
  * @method Doctrine_Collection getCustomersAddressList() Returns the current record's "CustomersAddressList" collection
  * @method Doctrine_Collection getProspects()            Returns the current record's "Prospects" collection
@@ -26,6 +30,8 @@ Doctrine_Manager::getInstance()->bindComponent('Geolocation', 'doctrine');
  * @method Geolocation         setFkidcountry()          Sets the current record's "fkidcountry" value
  * @method Geolocation         setJson()                 Sets the current record's "json" value
  * @method Geolocation         setXml()                  Sets the current record's "xml" value
+ * @method Geolocation         setLongitude()            Sets the current record's "longitude" value
+ * @method Geolocation         setLattitude()            Sets the current record's "lattitude" value
  * @method Geolocation         setCountry()              Sets the current record's "Country" value
  * @method Geolocation         setCustomersAddressList() Sets the current record's "CustomersAddressList" collection
  * @method Geolocation         setProspects()            Sets the current record's "Prospects" collection
@@ -68,6 +74,24 @@ abstract class BaseGeolocation extends sfDoctrineRecord
              ));
         $this->hasColumn('xml', 'string', null, array(
              'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => '',
+             ));
+        $this->hasColumn('longitude', 'float', null, array(
+             'type' => 'float',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => '',
+             ));
+        $this->hasColumn('lattitude', 'float', null, array(
+             'type' => 'float',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,

@@ -16,6 +16,7 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @property integer $phone
  * @property string $surname
  * @property string $password
+ * @property string $password_hash
  * @property integer $step
  * @property timestamp $created_at
  * @property timestamp $updated_at
@@ -30,6 +31,7 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @method integer     getPhone()                       Returns the current record's "phone" value
  * @method string      getSurname()                     Returns the current record's "surname" value
  * @method string      getPassword()                    Returns the current record's "password" value
+ * @method string      getPasswordHash()                Returns the current record's "password_hash" value
  * @method integer     getStep()                        Returns the current record's "step" value
  * @method timestamp   getCreatedAt()                   Returns the current record's "created_at" value
  * @method timestamp   getUpdatedAt()                   Returns the current record's "updated_at" value
@@ -43,6 +45,7 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @method Prospects   setPhone()                       Sets the current record's "phone" value
  * @method Prospects   setSurname()                     Sets the current record's "surname" value
  * @method Prospects   setPassword()                    Sets the current record's "password" value
+ * @method Prospects   setPasswordHash()                Sets the current record's "password_hash" value
  * @method Prospects   setStep()                        Sets the current record's "step" value
  * @method Prospects   setCreatedAt()                   Sets the current record's "created_at" value
  * @method Prospects   setUpdatedAt()                   Sets the current record's "updated_at" value
@@ -130,6 +133,15 @@ abstract class BaseProspects extends sfDoctrineRecord
              'length' => 45,
              ));
         $this->hasColumn('password', 'string', 45, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 45,
+             ));
+        $this->hasColumn('password_hash', 'string', 45, array(
              'type' => 'string',
              'fixed' => 0,
              'unsigned' => false,
