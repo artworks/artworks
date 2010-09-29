@@ -24,6 +24,7 @@ abstract class BaseProspectsForm extends BaseFormDoctrine
       'phone'                       => new sfWidgetFormInputText(),
       'surname'                     => new sfWidgetFormInputText(),
       'password'                    => new sfWidgetFormInputText(),
+      'password_hash'               => new sfWidgetFormInputText(),
       'step'                        => new sfWidgetFormInputText(),
       'created_at'                  => new sfWidgetFormDateTime(),
       'updated_at'                  => new sfWidgetFormDateTime(),
@@ -39,9 +40,10 @@ abstract class BaseProspectsForm extends BaseFormDoctrine
       'phone'                       => new sfValidatorInteger(array('required' => false)),
       'surname'                     => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'password'                    => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'password_hash'               => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'step'                        => new sfValidatorInteger(array('required' => false)),
-      'created_at'                  => new sfValidatorDateTime(array('required' => false)),
-      'updated_at'                  => new sfValidatorDateTime(array('required' => false)),
+      'created_at'                  => new sfValidatorDateTime(),
+      'updated_at'                  => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('prospects[%s]');

@@ -2,6 +2,12 @@
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
 
+#Erreurs
+errors_show:
+  url:   /:sf_culture/error/:numero
+  param:  { module: errors, action: Show}
+    
+
 # Stepping logics
 
 autoconnect_index:

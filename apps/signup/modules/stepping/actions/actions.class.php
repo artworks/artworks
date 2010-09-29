@@ -180,18 +180,36 @@ class steppingActions extends sfActions
 			foreach ($form->getErrorSchema() as $field => $error)
 			{				
 				if ($error instanceof sfValidatorErrorSchema){              
-					if($error->key() === 'unique'){
-						$submit = $request->getParameter('subscribers');						
-						$member_group_id = Doctrine::getTable('Subscribers')->getMemberGroupIdByEmail($submit['email']);
-						$this->getUser()->setUserEmail($submit['email']);
-						$this->redirect('@errors_show?numero=100'.$member_group_id);                                            
-					}
-					
-					if($error->key() === 'sponsoring_code'){						
-						$this->redirect('@errors_show?numero=2000');                                            
-					}
-					
+								
 				}		
+				//echo $error->getMessage();
+				if($error->getMessage() === 'email [I18N_NOT_UNIQUE_PROSPECT]'){
+					$email = $request->getPostParameter('prospects[email]');
+					
+					$prospects_id_prospects = Doctrine::getTable('Prospects')->findOneByEmail($email)->getIdProspects();
+					
+					// Mail with autoconnection link 
+					$generated_url		= $this->getContext()->getRouting()->generate('stepping_gotostep', array(), $absolute = false);
+					
+					$site_to_connect		= AccessSites::GetSecureConnexionURL($prospects_id_prospects,AccessSites::TimeOutLong,$generated_url);	
+					$auto_connection_link	= AccessSites::SiteSignup.$site_to_connect->URL;
+					
+					$message = Swift_Message::newInstance()
+						->setFrom('from@artworks.com')
+						->setTo($email)
+						->setSubject('Recovery')						
+						->setBody($this->getPartial('emails/recoverySignupMail', array('auto_connection_link'=> $auto_connection_link)), 'text/html');
+					
+					$this->getMailer()->send($message);
+					
+					$this->redirect('@errors_show?numero=3000');                                            
+				}	
+				
+				if($error->getMessage() === 'email [I18N_NOT_UNIQUE_CUSTOMER]'){
+					$submit = $request->getParameter('prospects');
+					$this->getUser()->setAttribute('email_reprise',$submit['email']);
+					$this->redirect('@errors_show?numero=3000');                                            
+				}			
 				
 				$errors[$field] =  stripslashes($error);
 			} 
