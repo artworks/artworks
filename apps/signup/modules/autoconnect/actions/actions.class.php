@@ -4,7 +4,7 @@
  *
  * @package    app
  * @subpackage autoconnect
- * @author     Ferey Cyril
+ * @author     Belazar Mohamed
  * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z  $
  */
 class autoconnectActions extends sfActions
@@ -21,9 +21,8 @@ class autoconnectActions extends sfActions
 	$this->logMessage('autoconnect', 'notice');
 	try
 	{	
-		// Routing : // cryptuid/:hascode/:crypttimelimit/
-			//
-			
+			// Routing : // cryptuid/:hascode/:crypttimelimit/
+			//			
 			// Récupération des paramètres obligatoires du routing
 			$CryptUID = $this->getRequestParameter('cryptuid',null);
 			$HashCode= $this->getRequestParameter('hashcode',null);
@@ -31,8 +30,7 @@ class autoconnectActions extends sfActions
 			$ForwardURLCodee = $this->getRequestParameter('forwardurl',null);
 			
 			if($CryptUID==null || $HashCode==null || $CryptTimeLimit==null)
-			{
-				
+			{				
 				echo("Page indisponible"); // TODO : renvoi sur page d'erreur
 				$this->logMessage("autoconnect: Tentative de connexion échouée avec des paramètres null CryptUID:$CryptUID HashCode:$HashCode CryptTimeLimit:$CryptTimeLimit", 'err');
 				return SfView::NONE; 
@@ -45,7 +43,7 @@ class autoconnectActions extends sfActions
 				$ObjAccessPayment = new AccessSites(); // Gestion de l'authentification sur le front
 				$Authentification = $ObjAccessPayment->SetMemberAuthentification($CryptUID,$HashCode,$CryptTimeLimit,$ForwardURLCodee);
 				if($Authentification!=null)
-				{ // 3 Formats possibles de ForwardURL www.attractiveworld.net secure.attractiveworld.net /offres/show
+				{	// 2 Formats possibles de ForwardURL www.artworks.net secure.artworks.net 
 					// 2 cas possibles
 					// 1/url sans préciser le domaine, c'est local on redirige directement
 					// 2/url sur un autre serveur, voir les 2 sous cas ci après, on crée une SecureConnexion

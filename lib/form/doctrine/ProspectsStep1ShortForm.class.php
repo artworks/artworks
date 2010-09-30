@@ -30,13 +30,16 @@ class ProspectsStep1ShortForm extends ProspectsForm
 		
 		$this->validatorSchema['country'] = new sfValidatorPass();
 		
+		$this->widgetSchema['geo'] = new sfWidgetFormSelect(array('choices'=>array()));
+		
+		$this->validatorSchema['geo'] = new sfValidatorString(array('required'=>'true'),array('required'=>'I18N_EMPTY_GEO'));
+		
 		parent::configure();	
 
-		
-		
-
-		
+			
 	}
+	
+	
 
 
 	

@@ -1,0 +1,1 @@
+<?php echo __('I18N_NOT_AUTH_ON_SIGNUP');?>

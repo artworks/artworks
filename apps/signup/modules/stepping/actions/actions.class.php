@@ -12,13 +12,17 @@ class steppingActions extends sfActions
 {
 	
 	public function executeGotoStep(sfWebRequest $request)  {
-		$uid   = $this->getUser()->getAttribute('uid');
-		$this->getUser()->setAttribute('idprospects',$uid);
-		
-		$prospects = Doctrine::getTable('Prospects')->find($uid);
-		$this->getUser()->setAttribute('step',$prospects->getStep());
-		
-		$this->redirect("@stepping_form?action=step".$prospects->getStep());
+		if($this->getUser()->hasAttribute('uid')){
+			$uid   = $this->getUser()->getAttribute('uid');
+			$this->getUser()->setAttribute('idprospects',$uid);
+			
+			$prospects = Doctrine::getTable('Prospects')->find($uid);
+			$this->getUser()->setAttribute('step',$prospects->getStep());
+			
+			$this->redirect("@stepping_form?action=step".$prospects->getStep());
+		}else{
+			return sfView::ERROR;
+		}
 	}
 	
 	/**
@@ -148,7 +152,7 @@ class steppingActions extends sfActions
 					$message = Swift_Message::newInstance()
 						->setFrom('from@artworks.com')
 						->setTo($form->getObject()->getEmail())
-						->setSubject('Subject')						
+						->setSubject('Begin')						
 						->setBody($this->getPartial('emails/beginSignupMail', array('auto_connection_link'=> $auto_connection_link)), 'text/html');
 					
 					$this->getMailer()->send($message);
@@ -159,7 +163,7 @@ class steppingActions extends sfActions
 					$message = Swift_Message::newInstance()
 						->setFrom('from@artworks.com')
 						->setTo($form->getObject()->getEmail())
-						->setSubject('Subject')
+						->setSubject('End')
 						->setBody($this->getPartial('emails/endSignupMail', array(
 									'password'=>$request->getPostParameter('prospects[password]'),
 									'email'=>$form->getEmail()
@@ -182,13 +186,13 @@ class steppingActions extends sfActions
 				if ($error instanceof sfValidatorErrorSchema){              
 								
 				}		
-				//echo $error->getMessage();
+				
 				if($error->getMessage() === 'email [I18N_NOT_UNIQUE_PROSPECT]'){
 					$email = $request->getPostParameter('prospects[email]');
 					
 					$prospects_id_prospects = Doctrine::getTable('Prospects')->findOneByEmail($email)->getIdProspects();
 					
-					// Mail with autoconnection link 
+					// Mail with recovery autoconnection link 
 					$generated_url		= $this->getContext()->getRouting()->generate('stepping_gotostep', array(), $absolute = false);
 					
 					$site_to_connect		= AccessSites::GetSecureConnexionURL($prospects_id_prospects,AccessSites::TimeOutLong,$generated_url);	

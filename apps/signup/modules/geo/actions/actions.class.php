@@ -17,9 +17,9 @@ class geoActions extends sfActions
 	 */
 	public function executeGeoSearch(sfWebRequest $request)
 	{
-		$address = $request->getParameter('address');
-		$town = $request->getParameter('town');
-		$country = $request->getParameter('country');
+		$address = urlencode( $request->getParameter('address'));
+		$town = urlencode($request->getParameter('town'));
+		$country = urlencode($request->getParameter('country'));
 		
 		$this->getResponse()->setHttpHeader('Content-Type','application/json; charset=utf-8');  
 

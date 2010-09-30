@@ -32,16 +32,16 @@
 <?php echo $form['country']->renderError(); ?>
 <?php echo $form['country']->render(); ?><br/><br/>
 
-
-OPTIONEL
 <?php __('I18N_TOWN')?><br/>
 <label>TOWN</label><input type="text" id="town">
 
 <?php __('I18N_COMPLETE ADDRESS')?><br/>
 <label>COMPLETE ADDRESS</label><input type="text" id="address" >
-<br/>
-<label>ADDRESS SUGGESTION</label>
-<textarea id="suggest"></textarea>
+<br/><br/>
+<?php __('I18N_ADDRESS SUGGESTION')?><br/>
+<?php echo $form['geo']->renderLabel(); ?>
+<?php echo $form['geo']->renderError(); ?>
+<?php echo $form['geo']->render(); ?><br/><br/>
 
 <br/>
 
