@@ -223,7 +223,7 @@ class steppingActions extends sfActions
 
 	protected function stepCheck($step)
 	{	
-		$this->redirectUnless($this->prospect = Doctrine_Core::getTable('Prospects')->find($this->getUser()->getAttribute('idprospects')),'@errors_show?numero=3000' ) ;
+		$this->redirectUnless($this->prospect = Doctrine_Core::getTable('Prospects')->find($this->getUser()->getAttribute('idprospects')),'@homepage' ) ;
 		$this->redirectUnless($this->prospect->getStep() >= $step ,'@stepping_form?action=step'.$this->prospect->getStep());		
 		$this->getUser()->setAttribute('step', $step);     	
 	}
