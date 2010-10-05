@@ -10,4 +10,19 @@
  */
 class BaseForm extends sfFormSymfony
 {
+
+	public static function listenToValidationError($event)
+	{
+		foreach ($event['error'] as $key => $error)
+		{
+			self::getEventDispatcher()->notify(new sfEvent(
+				$event->getSubject(),
+				'application.log',
+				array (
+							'priority' => sfLogger::NOTICE,
+							sprintf('Validation Error: %s: %s', $key, (string) $error)
+							)
+						));
+		}
+	}
 }

@@ -57,7 +57,7 @@ class ProspectsStep2ShortForm extends ProspectsForm
 	{
 		$updateObject = parent::updateObject($values);	
 		
-		$updateObject->setPasswordHash($updateObject->getPassword());		
+		//$updateObject->setPasswordHash(Password::generateHash("tttttt",sfConfig::get('app_key')));		
 
 		return $updateObject;
 	}

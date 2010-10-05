@@ -7,6 +7,10 @@ class ProjectConfiguration extends sfProjectConfiguration
 {
   public function setup()
   {
+	$this->getEventDispatcher()->connect(
+		'form.validation_error',
+		array('BaseForm', 'listenToValidationError')
+		);
 		$this->enablePlugins(array('sfDoctrinePlugin'));	
   }
 }

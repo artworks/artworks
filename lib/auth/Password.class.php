@@ -21,6 +21,7 @@ class Password {
 
 		return $salt . sha1($salt . $plainText);
 	}	
+	
 }
 
 ?>
