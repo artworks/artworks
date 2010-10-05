@@ -1,6 +1,6 @@
 $(document).ready(function () {
 
-    $('#town').keyup(function () {
+    $('#town,#address').keyup(function () {
 
         country = $('#prospects_country').val();
         town = $('#town').val();
@@ -14,7 +14,25 @@ $(document).ready(function () {
                 data: { 'address': address, 'town': town, 'country': country },
                 success: function (data) {
                     if (data.status == 'OK') {
-                        $('#suggest').text(data.results.formatted_address);
+
+                       // $('#prospects_geo').text(data.results[0].formatted_address);
+
+                        $.each(data.results,
+                             function (index, Element) {
+                                 var option = new Option(this.formatted_address, index);
+                                 // Use Jquery to get select list element
+                                 var dropdownList = $("#prospects_geo")[0];
+
+                                 if ($.browser.msie) {
+                                     dropdownList.add(option);
+                                 }
+
+                                 else {   
+                                     dropdownList.add(option, null);  
+                                 }
+                             }
+                         );
+
                     }
                 },
                 error: function (data) {
@@ -23,9 +41,6 @@ $(document).ready(function () {
             });
 
         }
-    });
-
-
-
+    });   
 
 });
