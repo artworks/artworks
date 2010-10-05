@@ -12,5 +12,6 @@
 <?php echo $form['password']->render(); ?><br/><br/>
 <!-- Protection contre les remplissage automatique -->
 <?php echo $form['_csrf_token']->render(); ?>
-<input type="submit"  value="<?php echo __('VALIDATE_LOGIN', null, 'stepping');?>">
+<input type="submit"  value="<?php echo __('VALIDATE_LOGIN', null, 'stepping');?>"><br/>
+<a href="http://signup.artworks.com/fr/step0">signup !</a> or <a href="http://www.artworks.com/fr/passworddrecover">recover your password !</a>
 </form>

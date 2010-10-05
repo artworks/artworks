@@ -44,7 +44,6 @@ class homepageActions extends sfActions
 	{			
 
 		$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-		$this->logMessage( $form->isValid(),'notice');
 		if ($form->isValid())
 		{ 		
 			$this->redirect('@homepage');
