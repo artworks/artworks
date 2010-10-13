@@ -8,6 +8,11 @@ errors_show:
   param:  { module: errors, action: Show}
     
 
+# geo logics
+geo_geo_search:
+  url:   /:sf_culture/geo/geosearch/*
+  param:  { module: geo, action: geoSearch }
+
 # Stepping logics
 
 autoconnect_index:
@@ -34,17 +39,18 @@ stepping_form:
   requirements:    
     sf_culture: (?:fr|en)
 
+js_index:
+  url:   /:sf_culture/js/generated.:sf_format
+  param: { module: js, action: index }  
+  requirements:    
+    sf_culture: (?:fr|en) 
+    sf_method: get
+    sf_format: js
+
 
 # default rules
 homepage:
-  url:   /
-  param: { module: default, action: index }
+  url:   /fr/
+  param: { module: stepping, action: step0 }
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
 
-default:
-  url:   /:module/:action/*

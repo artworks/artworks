@@ -24,8 +24,10 @@ abstract class BaseCustomersForm extends BaseFormDoctrine
       'name'                => new sfWidgetFormInputText(),
       'phone'               => new sfWidgetFormInputText(),
       'password'            => new sfWidgetFormInputText(),
+      'password_hash'       => new sfWidgetFormInputText(),
       'surname'             => new sfWidgetFormInputText(),
       'created_at'          => new sfWidgetFormDateTime(),
+      'updated_at'          => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
@@ -38,8 +40,10 @@ abstract class BaseCustomersForm extends BaseFormDoctrine
       'name'                => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'phone'               => new sfValidatorInteger(array('required' => false)),
       'password'            => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'password_hash'       => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'surname'             => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'created_at'          => new sfValidatorDateTime(array('required' => false)),
+      'updated_at'          => new sfValidatorDateTime(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('customers[%s]');

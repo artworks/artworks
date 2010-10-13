@@ -11,6 +11,7 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @property string $company
  * @property string $dialing_code
  * @property string $email
+ * @property integer $fkidgenderfromprospect
  * @property integer $fkidgeolocationfromprospect
  * @property string $name
  * @property integer $phone
@@ -20,12 +21,14 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @property integer $step
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property Gender $Gender
  * @property Geolocation $Geolocation
  * 
  * @method integer     getIdprospects()                 Returns the current record's "idprospects" value
  * @method string      getCompany()                     Returns the current record's "company" value
  * @method string      getDialingCode()                 Returns the current record's "dialing_code" value
  * @method string      getEmail()                       Returns the current record's "email" value
+ * @method integer     getFkidgenderfromprospect()      Returns the current record's "fkidgenderfromprospect" value
  * @method integer     getFkidgeolocationfromprospect() Returns the current record's "fkidgeolocationfromprospect" value
  * @method string      getName()                        Returns the current record's "name" value
  * @method integer     getPhone()                       Returns the current record's "phone" value
@@ -35,11 +38,13 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @method integer     getStep()                        Returns the current record's "step" value
  * @method timestamp   getCreatedAt()                   Returns the current record's "created_at" value
  * @method timestamp   getUpdatedAt()                   Returns the current record's "updated_at" value
+ * @method Gender      getGender()                      Returns the current record's "Gender" value
  * @method Geolocation getGeolocation()                 Returns the current record's "Geolocation" value
  * @method Prospects   setIdprospects()                 Sets the current record's "idprospects" value
  * @method Prospects   setCompany()                     Sets the current record's "company" value
  * @method Prospects   setDialingCode()                 Sets the current record's "dialing_code" value
  * @method Prospects   setEmail()                       Sets the current record's "email" value
+ * @method Prospects   setFkidgenderfromprospect()      Sets the current record's "fkidgenderfromprospect" value
  * @method Prospects   setFkidgeolocationfromprospect() Sets the current record's "fkidgeolocationfromprospect" value
  * @method Prospects   setName()                        Sets the current record's "name" value
  * @method Prospects   setPhone()                       Sets the current record's "phone" value
@@ -49,6 +54,7 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @method Prospects   setStep()                        Sets the current record's "step" value
  * @method Prospects   setCreatedAt()                   Sets the current record's "created_at" value
  * @method Prospects   setUpdatedAt()                   Sets the current record's "updated_at" value
+ * @method Prospects   setGender()                      Sets the current record's "Gender" value
  * @method Prospects   setGeolocation()                 Sets the current record's "Geolocation" value
  * 
  * @package    artworks
@@ -95,6 +101,15 @@ abstract class BaseProspects extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 45,
+             ));
+        $this->hasColumn('fkidgenderfromprospect', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 4,
              ));
         $this->hasColumn('fkidgeolocationfromprospect', 'integer', 4, array(
              'type' => 'integer',
@@ -182,6 +197,10 @@ abstract class BaseProspects extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Gender', array(
+             'local' => 'fkidgenderfromprospect',
+             'foreign' => 'idgender'));
+
         $this->hasOne('Geolocation', array(
              'local' => 'fkidgeolocationfromprospect',
              'foreign' => 'idgeolocation'));

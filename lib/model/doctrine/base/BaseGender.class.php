@@ -10,13 +10,16 @@ Doctrine_Manager::getInstance()->bindComponent('Gender', 'doctrine');
  * @property integer $idgender
  * @property string $label
  * @property Doctrine_Collection $Customers
+ * @property Doctrine_Collection $Prospects
  * 
  * @method integer             getIdgender()  Returns the current record's "idgender" value
  * @method string              getLabel()     Returns the current record's "label" value
  * @method Doctrine_Collection getCustomers() Returns the current record's "Customers" collection
+ * @method Doctrine_Collection getProspects() Returns the current record's "Prospects" collection
  * @method Gender              setIdgender()  Sets the current record's "idgender" value
  * @method Gender              setLabel()     Sets the current record's "label" value
  * @method Gender              setCustomers() Sets the current record's "Customers" collection
+ * @method Gender              setProspects() Sets the current record's "Prospects" collection
  * 
  * @package    artworks
  * @subpackage model
@@ -53,5 +56,9 @@ abstract class BaseGender extends sfDoctrineRecord
         $this->hasMany('Customers', array(
              'local' => 'idgender',
              'foreign' => 'fkidgender'));
+
+        $this->hasMany('Prospects', array(
+             'local' => 'idgender',
+             'foreign' => 'fkidgenderfromprospect'));
     }
 }

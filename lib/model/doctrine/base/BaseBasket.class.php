@@ -11,26 +11,26 @@ Doctrine_Manager::getInstance()->bindComponent('Basket', 'doctrine');
  * @property integer $fkidcustomersfrombasket
  * @property integer $fkidbasket_status
  * @property integer $fkidartworksfrombasket
- * @property Customers $Customers
- * @property BasketStatus $BasketStatus
  * @property Artworks $Artworks
+ * @property BasketStatus $BasketStatus
+ * @property Customers $Customers
  * @property Doctrine_Collection $Orders
  * 
  * @method integer             getIdbasket()                Returns the current record's "idbasket" value
  * @method integer             getFkidcustomersfrombasket() Returns the current record's "fkidcustomersfrombasket" value
  * @method integer             getFkidbasketStatus()        Returns the current record's "fkidbasket_status" value
  * @method integer             getFkidartworksfrombasket()  Returns the current record's "fkidartworksfrombasket" value
- * @method Customers           getCustomers()               Returns the current record's "Customers" value
- * @method BasketStatus        getBasketStatus()            Returns the current record's "BasketStatus" value
  * @method Artworks            getArtworks()                Returns the current record's "Artworks" value
+ * @method BasketStatus        getBasketStatus()            Returns the current record's "BasketStatus" value
+ * @method Customers           getCustomers()               Returns the current record's "Customers" value
  * @method Doctrine_Collection getOrders()                  Returns the current record's "Orders" collection
  * @method Basket              setIdbasket()                Sets the current record's "idbasket" value
  * @method Basket              setFkidcustomersfrombasket() Sets the current record's "fkidcustomersfrombasket" value
  * @method Basket              setFkidbasketStatus()        Sets the current record's "fkidbasket_status" value
  * @method Basket              setFkidartworksfrombasket()  Sets the current record's "fkidartworksfrombasket" value
- * @method Basket              setCustomers()               Sets the current record's "Customers" value
- * @method Basket              setBasketStatus()            Sets the current record's "BasketStatus" value
  * @method Basket              setArtworks()                Sets the current record's "Artworks" value
+ * @method Basket              setBasketStatus()            Sets the current record's "BasketStatus" value
+ * @method Basket              setCustomers()               Sets the current record's "Customers" value
  * @method Basket              setOrders()                  Sets the current record's "Orders" collection
  * 
  * @package    artworks
@@ -83,17 +83,17 @@ abstract class BaseBasket extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Customers', array(
-             'local' => 'fkidcustomersfrombasket',
-             'foreign' => 'idcustomers'));
+        $this->hasOne('Artworks', array(
+             'local' => 'fkidartworksfrombasket',
+             'foreign' => 'idartworks'));
 
         $this->hasOne('BasketStatus', array(
              'local' => 'fkidbasket_status',
              'foreign' => 'idbasket_status'));
 
-        $this->hasOne('Artworks', array(
-             'local' => 'fkidartworksfrombasket',
-             'foreign' => 'idartworks'));
+        $this->hasOne('Customers', array(
+             'local' => 'fkidcustomersfrombasket',
+             'foreign' => 'idcustomers'));
 
         $this->hasMany('Orders', array(
              'local' => 'idbasket',

@@ -24,9 +24,10 @@ class geoActions extends sfActions
 		$this->getResponse()->setHttpHeader('Content-Type','application/json; charset=utf-8');  
 
 		// Website url to open
-		$daurl = 'http://maps.google.com/maps/api/geocode/json?address='.$address.','.$town.','.$country.'&sensor=false&key=ABQIAAAAmo7k_03BNnO7sQ9vkOqt2RTDMo4bvKN1J3TjXGn3Q-EiYatQOhSeDY04pJDjdJvh4A2apUKpSkOL1A';
+		$buffer = GeolocationLib::httpWebservice("$address,$town,$country",'json');
+		$geo_datas = json_decode($buffer);
 		
-		$buffer = file_get_contents($daurl);
+		
 		
 		return $this->renderText($buffer);
 

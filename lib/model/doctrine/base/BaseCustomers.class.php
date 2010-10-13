@@ -16,10 +16,12 @@ Doctrine_Manager::getInstance()->bindComponent('Customers', 'doctrine');
  * @property string $name
  * @property integer $phone
  * @property string $password
+ * @property string $password_hash
  * @property string $surname
  * @property timestamp $created_at
- * @property Gender $Gender
+ * @property timestamp $updated_at
  * @property CustomerStatus $CustomerStatus
+ * @property Gender $Gender
  * @property Doctrine_Collection $Basket
  * @property Doctrine_Collection $CustomersAddressList
  * 
@@ -32,10 +34,12 @@ Doctrine_Manager::getInstance()->bindComponent('Customers', 'doctrine');
  * @method string              getName()                 Returns the current record's "name" value
  * @method integer             getPhone()                Returns the current record's "phone" value
  * @method string              getPassword()             Returns the current record's "password" value
+ * @method string              getPasswordHash()         Returns the current record's "password_hash" value
  * @method string              getSurname()              Returns the current record's "surname" value
  * @method timestamp           getCreatedAt()            Returns the current record's "created_at" value
- * @method Gender              getGender()               Returns the current record's "Gender" value
+ * @method timestamp           getUpdatedAt()            Returns the current record's "updated_at" value
  * @method CustomerStatus      getCustomerStatus()       Returns the current record's "CustomerStatus" value
+ * @method Gender              getGender()               Returns the current record's "Gender" value
  * @method Doctrine_Collection getBasket()               Returns the current record's "Basket" collection
  * @method Doctrine_Collection getCustomersAddressList() Returns the current record's "CustomersAddressList" collection
  * @method Customers           setIdcustomers()          Sets the current record's "idcustomers" value
@@ -47,10 +51,12 @@ Doctrine_Manager::getInstance()->bindComponent('Customers', 'doctrine');
  * @method Customers           setName()                 Sets the current record's "name" value
  * @method Customers           setPhone()                Sets the current record's "phone" value
  * @method Customers           setPassword()             Sets the current record's "password" value
+ * @method Customers           setPasswordHash()         Sets the current record's "password_hash" value
  * @method Customers           setSurname()              Sets the current record's "surname" value
  * @method Customers           setCreatedAt()            Sets the current record's "created_at" value
- * @method Customers           setGender()               Sets the current record's "Gender" value
+ * @method Customers           setUpdatedAt()            Sets the current record's "updated_at" value
  * @method Customers           setCustomerStatus()       Sets the current record's "CustomerStatus" value
+ * @method Customers           setGender()               Sets the current record's "Gender" value
  * @method Customers           setBasket()               Sets the current record's "Basket" collection
  * @method Customers           setCustomersAddressList() Sets the current record's "CustomersAddressList" collection
  * 
@@ -144,6 +150,15 @@ abstract class BaseCustomers extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 45,
              ));
+        $this->hasColumn('password_hash', 'string', 45, array(
+             'type' => 'string',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 45,
+             ));
         $this->hasColumn('surname', 'string', 45, array(
              'type' => 'string',
              'fixed' => 0,
@@ -162,18 +177,27 @@ abstract class BaseCustomers extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 25,
              ));
+        $this->hasColumn('updated_at', 'timestamp', 25, array(
+             'type' => 'timestamp',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 25,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('Gender', array(
-             'local' => 'fkidgender',
-             'foreign' => 'idgender'));
-
         $this->hasOne('CustomerStatus', array(
              'local' => 'fkidcustomer_status',
              'foreign' => 'idcustomer_status'));
+
+        $this->hasOne('Gender', array(
+             'local' => 'fkidgender',
+             'foreign' => 'idgender'));
 
         $this->hasMany('Basket', array(
              'local' => 'idcustomers',

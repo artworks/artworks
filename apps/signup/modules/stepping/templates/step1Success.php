@@ -4,6 +4,12 @@
 	<input type="hidden" name="sf_method" value="put" />
 	<?php endif; ?>
 
+
+<?php __('I18N_GENDER')?><br/>
+<?php echo $form['fkidgenderfromprospect']->renderLabel(); ?>
+<?php echo $form['fkidgenderfromprospect']->renderError(); ?>
+<?php echo $form['fkidgenderfromprospect']->render(); ?><br/><br/>
+
 <?php echo $form['company']->renderLabel(); ?>
 <?php echo $form['company']->renderError(); ?>
 <?php echo $form['company']->render(); ?><br/>
@@ -33,15 +39,21 @@
 <?php echo $form['country']->render(); ?><br/><br/>
 
 <?php __('I18N_TOWN')?><br/>
-<label>TOWN</label><input type="text" id="town">
+<?php echo $form['town']->renderLabel(); ?>
+<?php echo $form['town']->renderError(); ?>
+<?php echo $form['town']->render(); ?>
 
 <?php __('I18N_COMPLETE ADDRESS')?><br/>
-<label>COMPLETE ADDRESS</label><input type="text" id="address" >
-<br/><br/>
+<?php echo $form['address']->renderLabel(); ?>
+<?php echo $form['address']->renderError(); ?>
+<?php echo $form['address']->render(); ?>
+
+ <br/><br/>
 <?php __('I18N_ADDRESS SUGGESTION')?><br/>
 <?php echo $form['geo']->renderLabel(); ?>
 <?php echo $form['geo']->renderError(); ?>
 <?php echo $form['geo']->render(); ?><br/><br/>
+
 
 <br/>
 

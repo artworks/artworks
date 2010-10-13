@@ -138,8 +138,10 @@ class steppingActions extends sfActions
 			$form->save();	
 			 $prospects_id_prospects = $form->getObject()->getIdProspects();
 			
+			$this->getUser()->setAttribute('step', $step_next);	
+			$this->getUser()->setAttribute('idprospects',$prospects_id_prospects);	
 			
-			// Mail management from step0 to the last step
+			// Mail & redirect management from step0 to the last step
 			switch($form->step){
 				case 0:
 				
@@ -156,9 +158,13 @@ class steppingActions extends sfActions
 						->setBody($this->getPartial('emails/beginSignupMail', array('auto_connection_link'=> $auto_connection_link)), 'text/html');
 					
 					$this->getMailer()->send($message);
+					$this->redirect('@stepping_form?action=step'.$step_next);
+					
 					break;
-				case 3:
-				
+				case 2:
+					if (!$migration = Doctrine::getTable('prospects')->migrateProspectsToCustomers($prospects_id_prospects)){
+						$this->logMessage('Stored proc error','err');
+					};
 					// Mail with congratulations and signup report 
 					$message = Swift_Message::newInstance()
 						->setFrom('from@artworks.com')
@@ -166,17 +172,19 @@ class steppingActions extends sfActions
 						->setSubject('End')
 						->setBody($this->getPartial('emails/endSignupMail', array(
 									'password'=>$request->getPostParameter('prospects[password]'),
-									'email'=>$form->getEmail()
+									'email'=>$form->getObject()->getEmail()
 									)), 'text/html');
 					
 					$this->getMailer()->send($message);
 				break;
+				default:
+					$this->redirect('@stepping_form?action=step'.$step_next);
+				break;
 			}
 			
-			$this->getUser()->setAttribute('step', $step_next);	
-			$this->getUser()->setAttribute('idprospects',$prospects_id_prospects);	
 			
-			$this->redirect('@stepping_form?action=step'.$step_next);
+			
+			
 			
 		} 
 		
@@ -189,7 +197,7 @@ class steppingActions extends sfActions
 				
 				if($error->getMessage() === 'email [I18N_NOT_UNIQUE_PROSPECT]'){
 					$email = $request->getPostParameter('prospects[email]');
-					
+					$this->getUser()->setAttribute('email_reprise',$email);
 					$prospects_id_prospects = Doctrine::getTable('Prospects')->findOneByEmail($email)->getIdProspects();
 					
 					// Mail with recovery autoconnection link 

@@ -13,10 +13,11 @@ class errorsActions extends sfActions
 	// Affiche le template 
 	public function executeShow(sfWebRequest $request)
 	{
-		$error_num = $request->getParameter('numero',null);   // on récupère le numéro de l'erreur
 		
+		$this->redirectUnless($this->getUser()->hasAttribute('email_reprise'), '@homepage'); 
+		
+		$error_num = $request->getParameter('numero',null);   // on récupère le numéro de l'erreur
 		$this->form = new ProspectsError3000ShortForm();
-			
 		$this->setTemplate("error".$error_num);
 	}
 	

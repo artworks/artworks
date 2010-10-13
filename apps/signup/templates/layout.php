@@ -6,6 +6,7 @@
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
+   	<?php echo dynamic_javascript_include_tag ('@js_index')  ?>  
     <?php include_javascripts() ?>
   </head>
   <body>

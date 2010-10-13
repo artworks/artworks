@@ -12,26 +12,26 @@ Doctrine_Manager::getInstance()->bindComponent('Orders', 'doctrine');
  * @property integer $fkidorder_type
  * @property integer $fkidbasket
  * @property timestamp $created_at
+ * @property Basket $Basket
  * @property OrderStatus $OrderStatus
  * @property OrderType $OrderType
- * @property Basket $Basket
  * 
  * @method integer     getIdorders()         Returns the current record's "idorders" value
  * @method integer     getFkidorderStatus()  Returns the current record's "fkidorder_status" value
  * @method integer     getFkidorderType()    Returns the current record's "fkidorder_type" value
  * @method integer     getFkidbasket()       Returns the current record's "fkidbasket" value
  * @method timestamp   getCreatedAt()        Returns the current record's "created_at" value
+ * @method Basket      getBasket()           Returns the current record's "Basket" value
  * @method OrderStatus getOrderStatus()      Returns the current record's "OrderStatus" value
  * @method OrderType   getOrderType()        Returns the current record's "OrderType" value
- * @method Basket      getBasket()           Returns the current record's "Basket" value
  * @method Orders      setIdorders()         Sets the current record's "idorders" value
  * @method Orders      setFkidorderStatus()  Sets the current record's "fkidorder_status" value
  * @method Orders      setFkidorderType()    Sets the current record's "fkidorder_type" value
  * @method Orders      setFkidbasket()       Sets the current record's "fkidbasket" value
  * @method Orders      setCreatedAt()        Sets the current record's "created_at" value
+ * @method Orders      setBasket()           Sets the current record's "Basket" value
  * @method Orders      setOrderStatus()      Sets the current record's "OrderStatus" value
  * @method Orders      setOrderType()        Sets the current record's "OrderType" value
- * @method Orders      setBasket()           Sets the current record's "Basket" value
  * 
  * @package    artworks
  * @subpackage model
@@ -92,6 +92,10 @@ abstract class BaseOrders extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Basket', array(
+             'local' => 'fkidbasket',
+             'foreign' => 'idbasket'));
+
         $this->hasOne('OrderStatus', array(
              'local' => 'fkidorder_status',
              'foreign' => 'idorder_status'));
@@ -99,9 +103,5 @@ abstract class BaseOrders extends sfDoctrineRecord
         $this->hasOne('OrderType', array(
              'local' => 'fkidorder_type',
              'foreign' => 'idorder_type'));
-
-        $this->hasOne('Basket', array(
-             'local' => 'fkidbasket',
-             'foreign' => 'idbasket'));
     }
 }

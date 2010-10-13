@@ -217,17 +217,17 @@ Basket:
       notnull: false
       autoincrement: false
   relations:
-    Customers:
-      local: fkidcustomersfrombasket
-      foreign: idcustomers
+    Artworks:
+      local: fkidartworksfrombasket
+      foreign: idartworks
       type: one
     BasketStatus:
       local: fkidbasket_status
       foreign: idbasket_status
       type: one
-    Artworks:
-      local: fkidartworksfrombasket
-      foreign: idartworks
+    Customers:
+      local: fkidcustomersfrombasket
+      foreign: idcustomers
       type: one
     Orders:
       local: idbasket
@@ -409,6 +409,13 @@ Customers:
       primary: false
       notnull: false
       autoincrement: false
+    password_hash:
+      type: string(45)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
     surname:
       type: string(45)
       fixed: false
@@ -423,14 +430,21 @@ Customers:
       primary: false
       notnull: false
       autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
   relations:
-    Gender:
-      local: fkidgender
-      foreign: idgender
-      type: one
     CustomerStatus:
       local: fkidcustomer_status
       foreign: idcustomer_status
+      type: one
+    Gender:
+      local: fkidgender
+      foreign: idgender
       type: one
     Basket:
       local: idcustomers
@@ -472,17 +486,17 @@ CustomersAddressList:
       notnull: false
       autoincrement: false
   relations:
-    Geolocation:
-      local: fkidgeolocationfromaddresslist
-      foreign: idgeolocation
+    AddressType:
+      local: fkidaddress_type
+      foreign: idaddress_type
       type: one
     Customers:
       local: fkidcustomersfromaddresslist
       foreign: idcustomers
       type: one
-    AddressType:
-      local: fkidaddress_type
-      foreign: idaddress_type
+    Geolocation:
+      local: fkidgeolocationfromaddresslist
+      foreign: idgeolocation
       type: one
 DeliveryAreas:
   connection: doctrine
@@ -604,6 +618,10 @@ Gender:
     Customers:
       local: idgender
       foreign: fkidgender
+      type: many
+    Prospects:
+      local: idgender
+      foreign: fkidgenderfromprospect
       type: many
 Geolocation:
   connection: doctrine
@@ -746,6 +764,10 @@ Orders:
       notnull: false
       autoincrement: false
   relations:
+    Basket:
+      local: fkidbasket
+      foreign: idbasket
+      type: one
     OrderStatus:
       local: fkidorder_status
       foreign: idorder_status
@@ -753,10 +775,6 @@ Orders:
     OrderType:
       local: fkidorder_type
       foreign: idorder_type
-      type: one
-    Basket:
-      local: fkidbasket
-      foreign: idbasket
       type: one
 OrdersHistory:
   connection: doctrine
@@ -833,6 +851,13 @@ Prospects:
       primary: false
       notnull: false
       autoincrement: false
+    fkidgenderfromprospect:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
     fkidgeolocationfromprospect:
       type: integer(4)
       fixed: false
@@ -897,6 +922,10 @@ Prospects:
       notnull: false
       autoincrement: false
   relations:
+    Gender:
+      local: fkidgenderfromprospect
+      foreign: idgender
+      type: one
     Geolocation:
       local: fkidgeolocationfromprospect
       foreign: idgeolocation
