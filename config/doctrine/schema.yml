@@ -776,50 +776,6 @@ Orders:
       local: fkidorder_type
       foreign: idorder_type
       type: one
-OrdersHistory:
-  connection: doctrine
-  tableName: orders_history
-  columns:
-    id:
-      type: integer(8)
-      autoincrement: true
-      primary: true
-    idorders:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      default: '0'
-      notnull: true
-      autoincrement: false
-    fkidorder_status:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    fkidorder_type:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    fkidbasket:
-      type: integer(4)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
-    created_at:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
 Prospects:
   connection: doctrine
   tableName: prospects
