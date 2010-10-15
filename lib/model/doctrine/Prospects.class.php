@@ -18,6 +18,8 @@ class Prospects extends BaseProspects
 		$this->actAs('Timestampable');
 	}
 
+	
+	
 	public function getSalt()
 	{
 		return sfConfig::get('app_key');

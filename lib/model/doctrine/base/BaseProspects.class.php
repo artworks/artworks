@@ -9,8 +9,8 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * 
  * @property integer $idprospects
  * @property string $company
- * @property string $dialing_code
  * @property string $email
+ * @property integer $fkiddialing_codefromprospects
  * @property integer $fkidgenderfromprospect
  * @property integer $fkidgeolocationfromprospect
  * @property string $name
@@ -21,41 +21,44 @@ Doctrine_Manager::getInstance()->bindComponent('Prospects', 'doctrine');
  * @property integer $step
  * @property timestamp $created_at
  * @property timestamp $updated_at
+ * @property DialingCodes $DialingCodes
  * @property Gender $Gender
  * @property Geolocation $Geolocation
  * 
- * @method integer     getIdprospects()                 Returns the current record's "idprospects" value
- * @method string      getCompany()                     Returns the current record's "company" value
- * @method string      getDialingCode()                 Returns the current record's "dialing_code" value
- * @method string      getEmail()                       Returns the current record's "email" value
- * @method integer     getFkidgenderfromprospect()      Returns the current record's "fkidgenderfromprospect" value
- * @method integer     getFkidgeolocationfromprospect() Returns the current record's "fkidgeolocationfromprospect" value
- * @method string      getName()                        Returns the current record's "name" value
- * @method integer     getPhone()                       Returns the current record's "phone" value
- * @method string      getSurname()                     Returns the current record's "surname" value
- * @method string      getPassword()                    Returns the current record's "password" value
- * @method string      getPasswordHash()                Returns the current record's "password_hash" value
- * @method integer     getStep()                        Returns the current record's "step" value
- * @method timestamp   getCreatedAt()                   Returns the current record's "created_at" value
- * @method timestamp   getUpdatedAt()                   Returns the current record's "updated_at" value
- * @method Gender      getGender()                      Returns the current record's "Gender" value
- * @method Geolocation getGeolocation()                 Returns the current record's "Geolocation" value
- * @method Prospects   setIdprospects()                 Sets the current record's "idprospects" value
- * @method Prospects   setCompany()                     Sets the current record's "company" value
- * @method Prospects   setDialingCode()                 Sets the current record's "dialing_code" value
- * @method Prospects   setEmail()                       Sets the current record's "email" value
- * @method Prospects   setFkidgenderfromprospect()      Sets the current record's "fkidgenderfromprospect" value
- * @method Prospects   setFkidgeolocationfromprospect() Sets the current record's "fkidgeolocationfromprospect" value
- * @method Prospects   setName()                        Sets the current record's "name" value
- * @method Prospects   setPhone()                       Sets the current record's "phone" value
- * @method Prospects   setSurname()                     Sets the current record's "surname" value
- * @method Prospects   setPassword()                    Sets the current record's "password" value
- * @method Prospects   setPasswordHash()                Sets the current record's "password_hash" value
- * @method Prospects   setStep()                        Sets the current record's "step" value
- * @method Prospects   setCreatedAt()                   Sets the current record's "created_at" value
- * @method Prospects   setUpdatedAt()                   Sets the current record's "updated_at" value
- * @method Prospects   setGender()                      Sets the current record's "Gender" value
- * @method Prospects   setGeolocation()                 Sets the current record's "Geolocation" value
+ * @method integer      getIdprospects()                   Returns the current record's "idprospects" value
+ * @method string       getCompany()                       Returns the current record's "company" value
+ * @method string       getEmail()                         Returns the current record's "email" value
+ * @method integer      getFkiddialingCodefromprospects()  Returns the current record's "fkiddialing_codefromprospects" value
+ * @method integer      getFkidgenderfromprospect()        Returns the current record's "fkidgenderfromprospect" value
+ * @method integer      getFkidgeolocationfromprospect()   Returns the current record's "fkidgeolocationfromprospect" value
+ * @method string       getName()                          Returns the current record's "name" value
+ * @method integer      getPhone()                         Returns the current record's "phone" value
+ * @method string       getSurname()                       Returns the current record's "surname" value
+ * @method string       getPassword()                      Returns the current record's "password" value
+ * @method string       getPasswordHash()                  Returns the current record's "password_hash" value
+ * @method integer      getStep()                          Returns the current record's "step" value
+ * @method timestamp    getCreatedAt()                     Returns the current record's "created_at" value
+ * @method timestamp    getUpdatedAt()                     Returns the current record's "updated_at" value
+ * @method DialingCodes getDialingCodes()                  Returns the current record's "DialingCodes" value
+ * @method Gender       getGender()                        Returns the current record's "Gender" value
+ * @method Geolocation  getGeolocation()                   Returns the current record's "Geolocation" value
+ * @method Prospects    setIdprospects()                   Sets the current record's "idprospects" value
+ * @method Prospects    setCompany()                       Sets the current record's "company" value
+ * @method Prospects    setEmail()                         Sets the current record's "email" value
+ * @method Prospects    setFkiddialingCodefromprospects()  Sets the current record's "fkiddialing_codefromprospects" value
+ * @method Prospects    setFkidgenderfromprospect()        Sets the current record's "fkidgenderfromprospect" value
+ * @method Prospects    setFkidgeolocationfromprospect()   Sets the current record's "fkidgeolocationfromprospect" value
+ * @method Prospects    setName()                          Sets the current record's "name" value
+ * @method Prospects    setPhone()                         Sets the current record's "phone" value
+ * @method Prospects    setSurname()                       Sets the current record's "surname" value
+ * @method Prospects    setPassword()                      Sets the current record's "password" value
+ * @method Prospects    setPasswordHash()                  Sets the current record's "password_hash" value
+ * @method Prospects    setStep()                          Sets the current record's "step" value
+ * @method Prospects    setCreatedAt()                     Sets the current record's "created_at" value
+ * @method Prospects    setUpdatedAt()                     Sets the current record's "updated_at" value
+ * @method Prospects    setDialingCodes()                  Sets the current record's "DialingCodes" value
+ * @method Prospects    setGender()                        Sets the current record's "Gender" value
+ * @method Prospects    setGeolocation()                   Sets the current record's "Geolocation" value
  * 
  * @package    artworks
  * @subpackage model
@@ -84,15 +87,6 @@ abstract class BaseProspects extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 45,
              ));
-        $this->hasColumn('dialing_code', 'string', 45, array(
-             'type' => 'string',
-             'fixed' => 0,
-             'unsigned' => false,
-             'primary' => false,
-             'notnull' => false,
-             'autoincrement' => false,
-             'length' => 45,
-             ));
         $this->hasColumn('email', 'string', 45, array(
              'type' => 'string',
              'fixed' => 0,
@@ -101,6 +95,15 @@ abstract class BaseProspects extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 45,
+             ));
+        $this->hasColumn('fkiddialing_codefromprospects', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => true,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 4,
              ));
         $this->hasColumn('fkidgenderfromprospect', 'integer', 4, array(
              'type' => 'integer',
@@ -197,6 +200,10 @@ abstract class BaseProspects extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('DialingCodes', array(
+             'local' => 'fkiddialing_codefromprospects',
+             'foreign' => 'iddialing_code'));
+
         $this->hasOne('Gender', array(
              'local' => 'fkidgenderfromprospect',
              'foreign' => 'idgender'));

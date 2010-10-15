@@ -37,11 +37,15 @@ abstract class BaseOrdersHistory extends sfDoctrineRecord
     public function setTableDefinition()
     {
         $this->setTableName('orders_history');
-        $this->hasColumn('id', 'integer', 8, array(
+        $this->hasColumn('id', 'integer', 4, array(
              'type' => 'integer',
-             'autoincrement' => true,
-             'primary' => true,
-             'length' => 8,
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'default' => '0',
+             'notnull' => true,
+             'autoincrement' => false,
+             'length' => 4,
              ));
         $this->hasColumn('idorders', 'integer', 4, array(
              'type' => 'integer',

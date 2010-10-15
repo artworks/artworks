@@ -15,7 +15,7 @@ abstract class BaseOrdersHistoryForm extends BaseFormDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'id'               => new sfWidgetFormInputHidden(),
+      'id'               => new sfWidgetFormInputText(),
       'idorders'         => new sfWidgetFormInputText(),
       'fkidorder_status' => new sfWidgetFormInputText(),
       'fkidorder_type'   => new sfWidgetFormInputText(),
@@ -24,7 +24,7 @@ abstract class BaseOrdersHistoryForm extends BaseFormDoctrine
     ));
 
     $this->setValidators(array(
-      'id'               => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
+      'id'               => new sfValidatorInteger(array('required' => false)),
       'idorders'         => new sfValidatorInteger(array('required' => false)),
       'fkidorder_status' => new sfValidatorInteger(array('required' => false)),
       'fkidorder_type'   => new sfValidatorInteger(array('required' => false)),

@@ -12,6 +12,7 @@ Doctrine_Manager::getInstance()->bindComponent('Country', 'doctrine');
  * @property integer $fkiddelivery_areas
  * @property string $country_code
  * @property DeliveryAreas $DeliveryAreas
+ * @property Doctrine_Collection $DialingCodes
  * @property Doctrine_Collection $Geolocation
  * 
  * @method integer             getIdcountry()          Returns the current record's "idcountry" value
@@ -19,12 +20,14 @@ Doctrine_Manager::getInstance()->bindComponent('Country', 'doctrine');
  * @method integer             getFkiddeliveryAreas()  Returns the current record's "fkiddelivery_areas" value
  * @method string              getCountryCode()        Returns the current record's "country_code" value
  * @method DeliveryAreas       getDeliveryAreas()      Returns the current record's "DeliveryAreas" value
+ * @method Doctrine_Collection getDialingCodes()       Returns the current record's "DialingCodes" collection
  * @method Doctrine_Collection getGeolocation()        Returns the current record's "Geolocation" collection
  * @method Country             setIdcountry()          Sets the current record's "idcountry" value
  * @method Country             setLabel()              Sets the current record's "label" value
  * @method Country             setFkiddeliveryAreas()  Sets the current record's "fkiddelivery_areas" value
  * @method Country             setCountryCode()        Sets the current record's "country_code" value
  * @method Country             setDeliveryAreas()      Sets the current record's "DeliveryAreas" value
+ * @method Country             setDialingCodes()       Sets the current record's "DialingCodes" collection
  * @method Country             setGeolocation()        Sets the current record's "Geolocation" collection
  * 
  * @package    artworks
@@ -80,6 +83,10 @@ abstract class BaseCountry extends sfDoctrineRecord
         $this->hasOne('DeliveryAreas', array(
              'local' => 'fkiddelivery_areas',
              'foreign' => 'iddelivery_areas'));
+
+        $this->hasMany('DialingCodes', array(
+             'local' => 'idcountry',
+             'foreign' => 'fkidcountryfromdialingcodes'));
 
         $this->hasMany('Geolocation', array(
              'local' => 'idcountry',

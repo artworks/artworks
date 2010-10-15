@@ -1,12 +1,10 @@
 CREATE DEFINER=`root`@`localhost` PROCEDURE `migrate_prospects_to_customers`(IN profileId INT)
 BEGIN
 	SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
-	SET @uid = '';
 	START TRANSACTION;
-	select uid into @uid from signup.subscribers where id=profileId;
 	insert into customers (
 company,
-dialing_code,
+FKiddialing_codefromcustomers,
 email,
 FKidgender,
 name,
@@ -19,7 +17,7 @@ updated_at
   ) 
 	select
 		profile.company,
-profile.dialing_code,
+profile.FKiddialing_codefromprospects,
 profile.email,
 profile.FKidgenderfromprospect,
 profile.name,

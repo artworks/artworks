@@ -291,6 +291,10 @@ Country:
       local: fkiddelivery_areas
       foreign: iddelivery_areas
       type: one
+    DialingCodes:
+      local: idcountry
+      foreign: fkidcountryfromdialingcodes
+      type: many
     Geolocation:
       local: idcountry
       foreign: fkidcountry
@@ -360,17 +364,17 @@ Customers:
       primary: false
       notnull: false
       autoincrement: false
-    dialing_code:
+    email:
       type: string(45)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    email:
-      type: string(45)
+    fkiddialing_codefromcustomers:
+      type: integer(4)
       fixed: false
-      unsigned: false
+      unsigned: true
       primary: false
       notnull: false
       autoincrement: false
@@ -438,6 +442,10 @@ Customers:
       notnull: false
       autoincrement: false
   relations:
+    DialingCodes:
+      local: fkiddialing_codefromcustomers
+      foreign: iddialing_code
+      type: one
     CustomerStatus:
       local: fkidcustomer_status
       foreign: idcustomer_status
@@ -597,6 +605,43 @@ DeliveryPricingHistory:
       local: fkiddelivery_pricingfromhistory
       foreign: iddelivery_pricing
       type: one
+DialingCodes:
+  connection: doctrine
+  tableName: dialing_codes
+  columns:
+    iddialing_code:
+      type: integer(4)
+      fixed: false
+      unsigned: true
+      primary: true
+      autoincrement: true
+    fkidcountryfromdialingcodes:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+    code:
+      type: string(64)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: true
+      autoincrement: false
+  relations:
+    Country:
+      local: fkidcountryfromdialingcodes
+      foreign: idcountry
+      type: one
+    Customers:
+      local: iddialing_code
+      foreign: fkiddialing_codefromcustomers
+      type: many
+    Prospects:
+      local: iddialing_code
+      foreign: fkiddialing_codefromprospects
+      type: many
 Gender:
   connection: doctrine
   tableName: gender
@@ -776,6 +821,54 @@ Orders:
       local: fkidorder_type
       foreign: idorder_type
       type: one
+OrdersHistory:
+  connection: doctrine
+  tableName: orders_history
+  columns:
+    id:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    idorders:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      default: '0'
+      notnull: true
+      autoincrement: false
+    fkidorder_status:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidorder_type:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    fkidbasket:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
 Prospects:
   connection: doctrine
   tableName: prospects
@@ -793,17 +886,17 @@ Prospects:
       primary: false
       notnull: false
       autoincrement: false
-    dialing_code:
+    email:
       type: string(45)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
-    email:
-      type: string(45)
+    fkiddialing_codefromprospects:
+      type: integer(4)
       fixed: false
-      unsigned: false
+      unsigned: true
       primary: false
       notnull: false
       autoincrement: false
@@ -878,6 +971,10 @@ Prospects:
       notnull: false
       autoincrement: false
   relations:
+    DialingCodes:
+      local: fkiddialing_codefromprospects
+      foreign: iddialing_code
+      type: one
     Gender:
       local: fkidgenderfromprospect
       foreign: idgender
