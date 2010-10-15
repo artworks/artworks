@@ -51,15 +51,15 @@ class ProspectsStep1ShortForm extends ProspectsForm
 		$this->validatorSchema['country'] = new sfValidatorPass();
 
 		$this->widgetSchema->setLabels(array(
-		'fkidgenderfromprospect'	=> 'I18N_GENDER',
-		'geo'					=> 'I18N_GEO',
-		'address'					=> 'I18N_ADDRESS',
-		'country'					=> 'I18N_COUNTRY',
-		'fkiddialing_codefromprospects'					=> 'I18N_DIALING_CODE',	
-		'phone'					=> 'I18N_PHONE',	
-		'surname'					=> 'I18N_SURNAME',
-		'name'					=> 'I18N_NAME',	
-		'town'					=> 'I18N_TOWN',	
+		'fkidgenderfromprospect'	=> 'I18N_GENDER_LABEL',
+		'geo'					=> 'I18N_GEO_LABEL',
+		'address'					=> 'I18N_ADDRESS_LABEL',
+		'country'					=> 'I18N_COUNTRY_LABEL',
+		'fkiddialing_codefromprospects'					=> 'I18N_DIALING_CODE_LABEL',	
+		'phone'					=> 'I18N_PHONE_LABEL',	
+		'surname'					=> 'I18N_SURNAME_LABEL',
+		'name'					=> 'I18N_NAME_LABEL',	
+		'town'					=> 'I18N_TOWN_LABEL',	
 		));
 			
 		parent::configure();

@@ -27,6 +27,10 @@ class ProspectsStep0ShortForm extends ProspectsForm
 			array('halt_on_error'=>true,'trim'=>true,'required'=>true), array('required'=>'I18N_EMAIL_REQUIRED')
 			);
 		
+			$this->widgetSchema->setLabels(array(
+		'email'	=> 'I18N_EMAIL_LABEL',
+		));
+			
 	}
 	
 	

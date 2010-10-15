@@ -45,23 +45,15 @@ class ProspectsStep2ShortForm extends ProspectsForm
 					array('invalid' => 'I18N_CHECK_PASSWORD_EQUALITY')));
 		
 		
-		parent::configure();	
-
-		
-		
+		$this->widgetSchema->setLabels(array(
+		'password'	=> 'I18N_PASSWORD_LABEL',
+		));
+							
+					
+		parent::configure();		
 
 		
 	}
 	
-	public function updateObject($values = null)
-	{
-		$updateObject = parent::updateObject($values);	
-		
-		//$updateObject->setPasswordHash(Password::generateHash("tttttt",sfConfig::get('app_key')));		
-
-		return $updateObject;
-	}
-
-
 	
 }
