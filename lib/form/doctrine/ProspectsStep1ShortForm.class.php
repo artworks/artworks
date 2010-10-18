@@ -55,6 +55,7 @@ class ProspectsStep1ShortForm extends ProspectsForm
 		'geo'					=> 'I18N_GEO_LABEL',
 		'address'					=> 'I18N_ADDRESS_LABEL',
 		'country'					=> 'I18N_COUNTRY_LABEL',
+		'company'					=> 'I18N_COMPANY_LABEL',
 		'fkiddialing_codefromprospects'					=> 'I18N_DIALING_CODE_LABEL',	
 		'phone'					=> 'I18N_PHONE_LABEL',	
 		'surname'					=> 'I18N_SURNAME_LABEL',

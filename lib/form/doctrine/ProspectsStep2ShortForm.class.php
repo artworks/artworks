@@ -47,6 +47,7 @@ class ProspectsStep2ShortForm extends ProspectsForm
 		
 		$this->widgetSchema->setLabels(array(
 		'password'	=> 'I18N_PASSWORD_LABEL',
+		'password_bis'	=> 'I18N_PASSWORD_BIS_LABEL',
 		));
 							
 					
