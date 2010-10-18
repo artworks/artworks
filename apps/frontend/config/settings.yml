@@ -43,7 +43,7 @@ all:
        
   .actions:
     login_module: homepage
-    login_action: index
+    login_action: welcome
     
     secure_module: sfGlobalSecureActions
     secure_action: index

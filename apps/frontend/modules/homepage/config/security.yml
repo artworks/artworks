@@ -1,2 +1,11 @@
 signin:
   is_secure: false
+  
+passwordRecovery:
+  is_secure: false
+
+sendCredentials:
+  is_secure: false
+  
+sendCredentialsConfirmation:
+  is_secure: false

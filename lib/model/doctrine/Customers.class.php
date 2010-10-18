@@ -12,5 +12,57 @@
  */
 class Customers extends BaseCustomers
 {
+	public function setUp()
+	{
+		parent::setUp();
+		$this->actAs('Timestampable');
+	}
+	
+	/**
+	 * Sets the user password.
+	 *
+	 * @param string $password
+	 */
 
+	public function setPassword($password)
+	{
+		if (!$password && 0 == strlen($password))
+		{
+			return;
+		}
+
+		$salt = md5(rand(100000, 999999).$this->getEmail());
+		$this->setPasswordHash($salt);
+		$algorithm = 'sha1';
+
+		$algorithmAsStr = is_array($algorithm) ? $algorithm[0].'::'.$algorithm[1] : $algorithm;
+		if (!is_callable($algorithm))
+		{
+			throw new sfException(sprintf('The algorithm callable "%s" is not callable.', $algorithmAsStr));
+		}
+
+		$this->_set('password', call_user_func_array($algorithm, array($salt.$password)));
+	}
+
+	/**
+	 * Returns whether or not the given password is valid.
+	 *
+	 * @param string $password
+	 * @return boolean
+	 * @throws sfException
+	 */
+	public function checkPassword($password)
+	{
+		$algorithm = 'sha1';
+		if (false !== $pos = strpos($algorithm, '::'))
+		{
+			$algorithm = array(substr($algorithm, 0, $pos), substr($algorithm, $pos + 2));
+		}
+		if (!is_callable($algorithm))
+		{
+			throw new sfException(sprintf('The algorithm callable "%s" is not callable.', $algorithm));
+		}
+
+		return $this->getPassword() == call_user_func_array($algorithm, array($this->getPasswordHash().$password));
+	}
 }

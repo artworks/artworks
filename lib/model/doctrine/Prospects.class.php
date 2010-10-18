@@ -17,7 +17,6 @@ class Prospects extends BaseProspects
 		parent::setUp();
 		$this->actAs('Timestampable');
 	}
-
 	
 	
 	public function getSalt()

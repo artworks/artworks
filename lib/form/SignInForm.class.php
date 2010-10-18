@@ -29,6 +29,13 @@ class SignInForm extends sfForm
 		new sfValidatorCallback(array('callback' => array($this, 'checkCredentials')))
 		);
 
+		
+		$this->widgetSchema->setLabels(array(
+		'username'	=> 'I18N_USERNAME_LABEL',
+		'password'	=> 'I18N_USERNAME_LABEL'		
+			
+		));
+		
 		//sfContext::getInstance()->getLogger()->notice($id);
 		//$this->validatorSchema['password']  = new sfValidatorPass();
 
@@ -39,7 +46,7 @@ class SignInForm extends sfForm
 		$customer =false;
 
 		if ($values['username']){
-			$customer = Doctrine::getTable('Prospects')->findOneByEmail($values['username']);
+			$customer = Doctrine::getTable('Customers')->findOneByEmail($values['username']);
 		}
 
 		if (!$customer || !$customer->checkPassword($values['password']))

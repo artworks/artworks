@@ -1,11 +1,43 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+autoconnect_index:
+  url:   /autoconnect/:cryptuid/:hashcode/:crypttimelimit/:forwardurl
+  param:  { module: autoconnect, action: index}
+
+homepage_index:
+  url:   /:sf_culture/
+  param:  { module: homepage, action: index }
+  
+homepage_signin:
+  url:   /:sf_culture/signin
+  param:  { module: homepage, action: signin }
+  
+homepage_password_recovery:
+  url:   /:sf_culture/password_recovery
+  param:  { module: homepage, action: passwordRecovery }
+  
+homepage_send_credentials:
+  url:   /:sf_culture/send_credentials
+  param:  { module: homepage, action: sendCredentials }
+  
+homepage_welcome:
+  url:   /:sf_culture/welcome
+  param:  { module: homepage, action: welcome }
+  
+homepage_logout:
+  url:   /:sf_culture/logout
+  param:  { module: homepage, action: logOut }
+  
+  
+homepage_send_credentials_confirmation:
+  url:   /:sf_culture/send_credentials_confirmation
+  param:  { module: homepage, action: sendCredentialsConfirmation }
 
 # default rules
 homepage:
-  url:   /
-  param: { module: default, action: index }
+  url:   /:sf_culture/
+  param: { module: homepage, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

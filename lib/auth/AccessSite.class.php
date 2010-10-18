@@ -12,7 +12,7 @@ class AccessSites {
 	const SiteSecure="https://secure.artworks.com/autoconnect";
 	const SiteSignup="http://signup.artworks.com/autoconnect";
 	const SiteProfil="http://profil.artworks.com/autoconnect";
-	const SiteWWW="http://www.artworks.com/autoconnect";
+	const SiteFrontend="http://www.artworks.com/autoconnect";
 
 
 	/**
