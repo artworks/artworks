@@ -1,5 +1,5 @@
 cache/*
-apps/frontend/config/factories.yml
-apps/signup/config/factories.yml
+/apps/frontend/config/factories.yml
+/apps/signup/config/factories.yml
 log/*
 config/databases.yml
