@@ -3,8 +3,8 @@
 
 # default rules
 homepage:
-  url:   /
-  param: { module: default, action: index }
+  url:   /:sf_culture/
+  param: { module: myprofile, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

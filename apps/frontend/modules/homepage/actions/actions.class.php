@@ -61,7 +61,7 @@ class homepageActions extends sfActions
 		//$this->forward('default', 'module');
 		$this->form = new SignInForm();
 		$submit       = $this->processForm($request, $this->form);
-		$this->setTemplate('index');
+		$this->setTemplate('welcome');
 	}
 
 	/**
