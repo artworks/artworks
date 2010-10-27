@@ -34,10 +34,12 @@ class ProspectsStep1ShortForm extends ProspectsForm
 		$this->validatorSchema['name']->setOption('required','true');
 		$this->validatorSchema['surname']->setOption('required','true');
 		$this->validatorSchema['phone']->setOption('required','true');
+		$this->validatorSchema['phone']->setMessage('invalid','I18N_PHONE_ERROR');
 		$this->validatorSchema['fkiddialing_codefromprospects']->setOption('required','true');
 
 		$this->widgetSchema['fkiddialing_codefromprospects']->addOption('add_empty','SELECT');
 		$this->widgetSchema['fkiddialing_codefromprospects']->addOption('method','getCodeAndCountry');
+		$this->widgetSchema['fkiddialing_codefromprospects']->addOption('table_method','getCodeAndCountryPack');
 		$this->widgetSchema['fkiddialing_codefromprospects'] = new sfWidgetFormSelect (array('choices'=> $this->widgetSchema['fkiddialing_codefromprospects']->getChoices() ));
 
 

@@ -16,4 +16,17 @@ class DialingCodesTable extends Doctrine_Table
     {
         return Doctrine_Core::getTable('DialingCodes');
     }
+    
+    /**
+     * Returns an instance of Doctrine_Collection.
+     * containing a resultset with Country and DialingCodes object related
+     *
+     * @return object Doctrine_Collection
+     */
+    public function getCodeAndCountryPack()
+    {
+        return $this->createQuery('dc')->innerJoin('dc.Country c on idcountry = iddialing_code')->orderBy('c.label asc');
+    }
+    
+    
 }
