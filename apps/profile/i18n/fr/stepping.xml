@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xliff PUBLIC "-//XLIFF//DTD XLIFF//EN" "http://www.oasis-open.org/committees/xliff/documents/xliff.dtd">
+<xliff version="1.0">
+  <file source-language="EN" target-language="fr" datatype="plaintext" original="stepping" date="2010-05-11T11:04:39Z" product-name="stepping">
+    <header/>
+    <body>
+      <trans-unit id="1">
+        <source>VALIDATE_SUBSCRIPTION</source>
+        <target>Valider</target>
+      </trans-unit>     
+             <trans-unit id="2">
+        <source>I18N_PHONE_ERROR</source>
+        <target>"%value%" I18N_PHONE_ERROR_DIALOG_SAMPLE.</target>
+      </trans-unit>             
+		</body>
+  </file>
+</xliff>
