@@ -1,4 +1,4 @@
 all:    
   key: qxnml7_de8647663asqdxKJHD8)@=+
-  frontend_host: http://www.artworks.com/
+  frontend_host: http://www.artworks.com/dev.php/
   project_domain: .artworks.com

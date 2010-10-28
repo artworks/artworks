@@ -5,6 +5,16 @@
 homepage:
   url:   /:sf_culture/
   param: { module: myprofile, action: index }
+  
+myprofile_logout:
+  url:   /:sf_culture/logout
+  param:  { module: myprofile, action: logOut }
+
+myprofile_update:
+  url:   /:sf_culture/update 
+  param: { module: myprofile, action: update }
+  requirements: 
+   sf_method: put
 
 # generic rules
 # please, remove them by adding more specific rules

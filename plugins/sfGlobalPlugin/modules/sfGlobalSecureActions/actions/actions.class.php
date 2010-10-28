@@ -24,7 +24,7 @@ class sfGlobalSecureActionsActions extends sfActions
 
 			}
 			else{
-				$customer = Doctrine::getTable('Customers')->findOneById($this->getUser()->getUserId());
+				$customer = Doctrine::getTable('Customers')->findOneByIdcustomers($this->getUser()->getUserId());
 
 				if($customer->getFkidcustomerStatus()==10  ){
 					$this->getUser()->addCredential('customer_regular');
