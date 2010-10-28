@@ -54,10 +54,6 @@ class homepageActions extends sfActions
 	 */
 	public function executeWelcome(sfWebRequest $request)
 	{
-		$session_save_path = "tcp://lol:11211?persistent=1&weight=1&timeout=1&retry_interval=15";
-ini_set('session.save_handler', 'memcache');
-ini_set('session.save_path', $session_save_path);
-		$this->getUser()->setAttribute('user_id',"ss");
 		if (!$request->getParameter('sf_culture'))
 		{			
 			$this->redirect('@homepage');
@@ -112,7 +108,7 @@ ini_set('session.save_path', $session_save_path);
 				case 'SignInForm':
 					// Authenticate the user and redirect to homepage
 					$customer = Doctrine::getTable('Customers')->findOneByEmail($form->getValue('username'));
-					//$this->getUser()->setAuthenticated(true);
+					$this->getUser()->setAuthenticated(true);
 					$this->getUser()->setUserId($customer->getIdCustomers());
 					$this->redirect('@homepage');
 					break;

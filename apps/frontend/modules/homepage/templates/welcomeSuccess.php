@@ -13,5 +13,5 @@
 <!-- Protection contre les remplissage automatique -->
 <?php echo $form['_csrf_token']->render(); ?>                
 <input type="submit"  value="<?php echo __('I18N_VALIDATE', null, 'stepping');?>"><br/>
-<a href="http://signup.artworks.com/fr/step0">signup !</a> or <?php echo link_to1(__('recover your password !'), "@homepage_password_recovery")?></a>
+<a href="http://signup.artworks.com/fr/step0">signup !</a> or <?php echo link_to1(__('recover your password !'), "@homepage_password_recovery")?>
 </form>

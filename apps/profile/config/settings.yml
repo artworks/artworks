@@ -40,7 +40,7 @@ all:
       - sfGlobalSecureActions
       
     # Form security secret (CSRF protection)
-    csrf_secret:            false
+    csrf_secret:            72dc073812e5ce12959cf8d0ff29ee6c3c2f539
 
     # Output escaping settings
     escaping_strategy:      true
