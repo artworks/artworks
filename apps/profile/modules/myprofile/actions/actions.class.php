@@ -18,6 +18,7 @@ class myprofileActions extends sfActions
   public function executeIndex(sfWebRequest $request)
   {
    // $this->forward('default', 'module');
-   $this->form = new CustomersForm();
+   $this->form = new CustomersProfileForm(Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId()));
+   
   }
 }

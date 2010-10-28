@@ -26,7 +26,7 @@ test:
 dev:
   mailer:
     param:
-      delivery_strategy: none
+      delivery_strategy: realtime
 
 all:
   routing:
@@ -50,8 +50,8 @@ all:
       transport:
         class: Swift_SmtpTransport
         param:
-          host:       smtp.HOST.fr
+          host:       smtp.pictime.fr
           port:       25
           encryption: ~
-          username:   USERNAME
-          password:   PASSWORD
+          username:   mohamed.belazar
+          password:   jsyicoqf

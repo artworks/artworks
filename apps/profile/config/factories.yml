@@ -29,6 +29,20 @@ dev:
       delivery_strategy: none
 
 all:
+  storage:
+    class: sfCacheSessionStorage
+    param:
+      session_name: artworks
+      session_cookie_domain: '<?php echo sfConfig::get('app_project_domain');?>'
+      session_cookie_lifetime: +30 days
+      cache:
+        class: sfMemcacheCache
+        param:
+          servers: # Array of servers
+            localserver:
+              host: localhost # hostname or IP of mamcache server
+              port: 11211 # default memcache port
+              
   routing:
     class: sfPatternRouting
     param:

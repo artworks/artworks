@@ -13,12 +13,12 @@ class SignInForm extends sfForm
 	public function configure()
 	{
 
-
 		parent::configure();
 
 		$this->widgetSchema->getFormFormatter()->setTranslationCatalogue('stepping');
 		$this->widgetSchema->setNameFormat('signin[%s]');
-		$this->widgetSchema['_csrf_token'] = new sfWidgetFormInputHidden();
+		
+
 		$this->widgetSchema['username'] = new sfWidgetFormInput();
 		$this->widgetSchema['password'] = new sfWidgetFormInputPassword();
 

@@ -26,9 +26,26 @@ test:
 dev:
   mailer:
     param:
-      delivery_strategy: none
+      delivery_strategy: realtime
 
 all:
+  storage:
+    class: sfCacheSessionStorage
+    param:
+      session_name: artworks
+      session_cookie_domain: .artworks.com
+      cache:
+        class: sfMemcacheCache
+        param:
+          persistent: true
+          lifetime: 86400         
+          prefix: %SF_APP%_%SF_ENVIRONMENT%
+
+  user:
+    class: myUser
+    param:
+      timeout: '+ 1 day'
+          
   routing:
     class: sfPatternRouting
     param:
@@ -40,3 +57,18 @@ all:
     param:
       cache_key_use_vary_headers: true
       cache_key_use_host_name:    true
+
+  mailer:
+    class: sfMailer
+    param:
+      logging:           %SF_LOGGING_ENABLED%
+      charset:           %SF_CHARSET%
+      delivery_strategy: realtime
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host:       smtp.pictime.fr
+          port:       25
+          encryption: ~
+          username:   mohamed.belazar
+          password:   jsyicoqf

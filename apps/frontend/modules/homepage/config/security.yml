@@ -1,6 +1,9 @@
 signin:
   is_secure: false
-  
+
+index:
+  is_secure: true
+
 passwordRecovery:
   is_secure: false
 

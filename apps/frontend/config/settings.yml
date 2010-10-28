@@ -10,7 +10,7 @@ dev:
   .settings:
     error_reporting:        <?php echo (E_ALL | E_STRICT)."\n" ?>
     web_debug:              true
-    cache:                  false
+    cache:                  true
     no_script_name:         false
     etag:                   false
 
@@ -24,6 +24,10 @@ test:
 
 all:
   .settings:
+  
+    enabled_modules:
+      - sfGlobalSecureActions
+      
     # Form security secret (CSRF protection)
     csrf_secret:            72dc073812e5ce12959cf8d0ff29ee6c3c2f5391
 
