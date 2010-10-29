@@ -442,13 +442,13 @@ Customers:
       notnull: false
       autoincrement: false
   relations:
-    DialingCodes:
-      local: fkiddialing_codefromcustomers
-      foreign: iddialing_code
-      type: one
     CustomerStatus:
       local: fkidcustomer_status
       foreign: idcustomer_status
+      type: one
+    DialingCodes:
+      local: fkiddialing_codefromcustomers
+      foreign: iddialing_code
       type: one
     Gender:
       local: fkidgender
