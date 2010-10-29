@@ -17,12 +17,37 @@ class myprofileActions extends sfActions
 	 */
 	public function executeIndex(sfWebRequest $request)
 	{
-		// $this->forward('default', 'module');
-		$this->form = new CustomersProfileForm(Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId()));
-		 
+		$customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
+		$this->form = new CustomersProfileForm($customer);		 
+			
 	}
 
-
+	/**
+	 * Executes change password action
+	 *
+	 * @param sfRequest $request A request object
+	 */
+	public function executeChangePassword(sfWebRequest $request)
+	{
+		$customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
+			 
+		$this->form = new CustomersPasswordForm($customer);
+		
+	}
+	
+	/**
+	 * Executes change password action
+	 *
+	 * @param sfRequest $request A request object
+	 */
+	public function executeChangeAddresses(sfWebRequest $request)
+	{
+		//$customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
+			 
+		$this->form = new CustomersAddressForm();
+		
+	}
+	
 
 	public function executeUpdate(sfWebRequest $request)
 	{
@@ -31,9 +56,21 @@ class myprofileActions extends sfActions
 		$this->forward404Unless($data = Doctrine::getTable('Customers')->findOneByIdcustomers($this->getUser()->getUserId()));
 
 		$form_type    = $request->getPostParameter('form_type');
-		$submit       = $this->processForm($request, new $form_type($data,array('sf_user'=>$this->getUser())));
+		$this->form = new $form_type($data,array('sf_user'=>$this->getUser()));
+		$submit       = $this->processForm($request,$this->form );
 
-		$this->setTemplate("index");
+		switch($form_type){
+				case 'CustomersPasswordForm' :
+					$this->setTemplate("changePassword");
+				break;	
+				case 'CustomersProfileForm' :
+					$this->setTemplate("index");
+				break;	
+				case 'CustomersAddressForm' :
+					$this->setTemplate("changeAddresses");
+				break;		
+			}
+		
 
 	}
 
@@ -64,6 +101,15 @@ class myprofileActions extends sfActions
 		if ($form->isValid())
 		{
 			$form->save();
+			
+			switch(get_class($form)){
+				case 'CustomersPasswordForm' :
+					 $this->getUser()->setFlash('notice', sprintf('Your password has been changed.'));
+ 				break;	
+				case 'CustomersProfileForm' :
+					
+				break;			
+			}
 			$this->redirect('@homepage');
 
 		}

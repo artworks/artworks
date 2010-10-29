@@ -7,6 +7,7 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
     <?php include_javascripts() ?>
+     <?php echo dynamic_javascript_include_tag ('@js_index')  ?>  
   </head>
   <body>
     <?php echo $sf_content ?>

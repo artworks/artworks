@@ -14,7 +14,7 @@ default:
 
   stylesheets:    [main.css]
 
-  javascripts:    []
+  javascripts:    [jquery,profile]
 
   has_layout:     true
   layout:         layout
