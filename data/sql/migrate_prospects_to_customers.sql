@@ -39,12 +39,14 @@ SELECT FKidgeolocationfromprospect INTO @geolocationID from prospects WHERE idpr
 insert into customers_address_list (
 	FKidgeolocationfromaddresslist,
   FKidcustomersfromaddresslist,
+	FKidcustomer_status,
   FKidaddress_type
 	) 
 	select	
 		profile.FKidgeolocationfromprospect,
 		@insertedId,
-		1
+		1,
+    10
 		from prospects as profile
 		where profile.idprospects = profileId;
 
