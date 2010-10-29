@@ -746,18 +746,74 @@ Customers:
     email: mbelazar@gmail.com
     DialingCodes: DialingCodes_153
     Gender: Gender_2
+    CustomerStatus: CustomerStatus_10
     name: sdfqsdf
     phone: '55555'
     password: 95a2ddcef7f7605f3bf49635ac312f019a1308ab
     password_hash: a21bca19bdf46c95f46a0f2c1f439620
     surname: fqsdf
     created_at: '2010-10-15 11:52:26'
-    updated_at: '2010-10-15 11:52:26'
+    updated_at: '2010-10-28 19:27:53'
+  Customers_7:
+    company: sqdf
+    email: dfqsdf@qdfqs.ddd
+    DialingCodes: DialingCodes_1
+    Gender: Gender_1
+    name: qsfqsdf
+    phone: '0'
+    password: 14fc7c75ea33bee1003d3e8eb6027831e3b829af
+    password_hash: 45c975012590c38cdce18bda74546911
+    surname: sqdfqsdf
+    created_at: '2010-10-18 14:11:37'
+    updated_at: '2010-10-18 14:11:37'
+  Customers_8:
+    company: _TEST_COMPANdY_
+    email: 22336@16748.com
+    DialingCodes: DialingCodes_5
+    Gender: Gender_1
+    CustomerStatus: CustomerStatus_10
+    name: _TEST_NAME_
+    phone: '10000'
+    password: e47677117f0e1cd621cbf1954a23ec55681a4629
+    password_hash: 6cdf284a4dd72d23ca60a0fc00622a4d
+    surname: _TEST_SURNAME_
+    created_at: '2010-10-18 14:12:59'
+    updated_at: '2010-10-29 17:12:39'
+  Customers_9:
+    company: _TEST_COMPANY_
+    email: 26863@8083.com
+    DialingCodes: DialingCodes_1
+    Gender: Gender_1
+    CustomerStatus: CustomerStatus_10
+    name: _TEST_NAME_
+    phone: '10000'
+    password: 84d06d7d6d2d2e9720a492197447e27dd0bcffd5
+    password_hash: ad5766e165f7562a345aaefbbc29652a
+    surname: _TEST_SURNAME_
+    created_at: '2010-10-18 14:13:36'
+    updated_at: '2010-10-28 19:27:58'
 CustomersAddressList:
   CustomersAddressList_5:
     Geolocation: Geolocation_11
     Customers: Customers_6
     AddressType: AddressType_1
+  CustomersAddressList_6:
+    Geolocation: Geolocation_13
+    Customers: Customers_7
+    AddressType: AddressType_1
+  CustomersAddressList_7:
+    Geolocation: Geolocation_12
+    Customers: Customers_8
+    AddressType: AddressType_1
+  CustomersAddressList_8:
+    Geolocation: Geolocation_12
+    Customers: Customers_9
+    AddressType: AddressType_1
+CustomerStatus:
+  CustomerStatus_10:
+    label: customer_regular
+  CustomerStatus_20:
+    label: customer_vip
 DialingCodes:
   DialingCodes_1:
     Country: Country_1
@@ -1432,3 +1488,82 @@ Geolocation:
     xml: null
     longitude: '2.3509871'
     lattitude: '48.8566667'
+  Geolocation_12:
+    json: null
+    xml: null
+    longitude: '-75.3097449'
+    lattitude: '43.0517804'
+  Geolocation_13:
+    json: null
+    xml: null
+    longitude: '-85.7420996'
+    lattitude: '38.1858023'
+  Geolocation_14:
+    json: null
+    xml: null
+    longitude: '-44.0553913'
+    lattitude: '-19.919297'
+Prospects:
+  Prospects_8:
+    company: _TEST_COMPANY_
+    email: 20299@4096.com
+    DialingCodes: DialingCodes_1
+    Gender: Gender_1
+    Geolocation: Geolocation_12
+    name: _TEST_NAME_
+    phone: '10000'
+    surname: _TEST_SURNAME_
+    password: null
+    password_hash: null
+    step: '2'
+    created_at: '2010-10-18 14:10:11'
+    updated_at: '2010-10-18 14:10:14'
+  Prospects_9:
+    company: _TEST_COMPANY_
+    email: 30826@6662.com
+    DialingCodes: DialingCodes_1
+    Gender: Gender_1
+    Geolocation: Geolocation_12
+    name: _TEST_NAME_
+    phone: '10000'
+    surname: _TEST_SURNAME_
+    password: null
+    password_hash: null
+    step: '2'
+    created_at: '2010-10-18 14:10:38'
+    updated_at: '2010-10-18 14:10:41'
+  Prospects_13:
+    company: null
+    email: fsdf@ddf.ccc
+    name: null
+    phone: null
+    surname: null
+    password: null
+    password_hash: null
+    step: '1'
+    created_at: '2010-10-21 22:41:39'
+    updated_at: '2010-10-21 22:41:39'
+  Prospects_14:
+    company: null
+    email: fsdf@ddf.cccrrr
+    name: null
+    phone: null
+    surname: null
+    password: null
+    password_hash: null
+    step: '2'
+    created_at: '2010-10-21 22:42:38'
+    updated_at: '2010-10-21 22:42:38'
+  Prospects_15:
+    company: dsdf
+    email: fdsq@sdqfqs.ccc
+    DialingCodes: DialingCodes_3
+    Geolocation: Geolocation_14
+    name: qsdfqsdf
+    phone: '444'
+    surname: sqdfqsdf
+    password: null
+    password_hash: null
+    step: '2'
+    created_at: '2010-10-26 22:09:23'
+    updated_at: '2010-10-27 16:05:37'
