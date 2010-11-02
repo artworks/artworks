@@ -8,7 +8,7 @@
         <source>VALIDATE_SUBSCRIPTION</source>
         <target>Valider</target>
       </trans-unit>     
-             <trans-unit id="2">
+      <trans-unit id="2">
         <source>I18N_PHONE_ERROR</source>
         <target>"%value%" I18N_PHONE_ERROR_DIALOG_SAMPLE.</target>
       </trans-unit>             
