@@ -44,7 +44,7 @@ all:
   user:
     class: myUser
     param:
-      timeout: '+ 1 day'
+      timeout: 4800
           
   routing:
     class: sfPatternRouting
