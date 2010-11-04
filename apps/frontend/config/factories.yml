@@ -71,4 +71,4 @@ all:
           port:       25
           encryption: ~
           username:   mohamed.belazar
-          password:   jsyicoqf
+          password:   
