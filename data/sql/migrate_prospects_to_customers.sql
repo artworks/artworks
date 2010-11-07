@@ -1,4 +1,4 @@
-CREATE DEFINER=`root`@`localhost` PROCEDURE `migrate_prospects_to_customers`(IN profileId INT)
+CREATE  PROCEDURE `migrate_prospects_to_customers`(IN profileId INT)
 BEGIN
 	SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 	START TRANSACTION;
@@ -7,6 +7,7 @@ company,
 FKiddialing_codefromcustomers,
 email,
 FKidgender,
+FKidcustomer_status,
 name,
 phone,
 password,
@@ -20,6 +21,7 @@ updated_at
 profile.FKiddialing_codefromprospects,
 profile.email,
 profile.FKidgenderfromprospect,
+10,
 profile.name,
 profile.phone,
 profile.password,
@@ -39,14 +41,13 @@ SELECT FKidgeolocationfromprospect INTO @geolocationID from prospects WHERE idpr
 insert into customers_address_list (
 	FKidgeolocationfromaddresslist,
   FKidcustomersfromaddresslist,
-	FKidcustomer_status,
+
   FKidaddress_type
 	) 
 	select	
 		profile.FKidgeolocationfromprospect,
 		@insertedId,
-		1,
-    10
+		1   
 		from prospects as profile
 		where profile.idprospects = profileId;
 
@@ -57,4 +58,4 @@ insert into customers_address_list (
 
 	SELECT @insertedId;
 
-END
+END;
