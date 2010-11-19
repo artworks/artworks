@@ -1,4 +1,5 @@
 all:    
   key: qxnml7_de8647663asqdxKJHD8)@=+
-  frontend_host: http://www.artworks.com/dev.php/
+  frontend_host: http://www.artworks.com/
   project_domain: .artworks.com
+  template_dir: %SF_PLUGIN_DIR%/sfGlobalPlugin/templates

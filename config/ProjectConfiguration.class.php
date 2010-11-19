@@ -12,5 +12,12 @@ class ProjectConfiguration extends sfProjectConfiguration
 		array('BaseForm', 'listenToValidationError')
 		);
 		$this->enablePlugins(array('sfDoctrinePlugin'));	
+		sfConfig::set('sf_app_template_dir', sfConfig::get('sf_plugins_dir').'/sfGlobalPlugin/templates');
+  
+  }
+  
+  public function configure()
+  {
+  
   }
 }
