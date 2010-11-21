@@ -1,6 +1,6 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
-
+# profile routing
 # default rules
 
 js_index:
@@ -11,7 +11,6 @@ js_index:
     sf_method: get
     sf_format: js
 
-
 myprofile_change_password:
   url:   /:sf_culture/changepassword
   param:  { module: myprofile, action: changePassword }
@@ -19,10 +18,20 @@ myprofile_change_password:
 myprofile_change_addresses:
   url:   /:sf_culture/changeaddresses
   param:  { module: myprofile, action: changeAddresses }
+  
+myprofile_delete_address:
+  url:   /:sf_culture/deleteaddress
+  param:  { module: myprofile, action: deleteAddress }
+  
+myprofile_flag_address:
+  url:   /:sf_culture/flagaddress
+  param:  { module: myprofile, action: flagAddress }
 
-sfGlobalGeoActions_geo:
-  url:   /:sf_culture/geosearch
-  param:  { module: sfGlobalGeoActions, action: geoSearch }
+myprofile_add_address:
+  url:   /:sf_culture/addaddress
+  param:  { module: myprofile, action: addAddress }
+  requirements: 
+   sf_method: put
   
 myprofile_logout:
   url:   /:sf_culture/logout
@@ -38,11 +47,4 @@ homepage:
   url:   /:sf_culture/
   param: { module: myprofile, action: index }
 
-# generic rules
-# please, remove them by adding more specific rules
-default_index:
-  url:   /:module
-  param: { action: index }
 
-default:
-  url:   /:module/:action/*

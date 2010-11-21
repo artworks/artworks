@@ -28,6 +28,10 @@ all:
     # Form security secret (CSRF protection)
     csrf_secret:            b7a1193ae46caa190b4146b13e254e1f6d50ca73
 
+    enabled_modules:
+      - sfGlobalBasicActions
+      - sfGlobalGeoActions
+      
     # Output escaping settings
     escaping_strategy:      true
     escaping_method:        ESC_SPECIALCHARS

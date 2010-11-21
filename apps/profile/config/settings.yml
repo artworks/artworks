@@ -37,8 +37,10 @@ all:
   .settings:
  
     enabled_modules:
+      - sfGlobalBasicActions
       - sfGlobalSecureActions
       - sfGlobalGeoActions
+
       
     # Form security secret (CSRF protection)
     csrf_secret:            72dc073812e5ce12959cf8d0ff29ee6c3c2f539

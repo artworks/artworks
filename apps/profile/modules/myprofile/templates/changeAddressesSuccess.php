@@ -1,9 +1,11 @@
-
-<form id="<?php echo get_class($form); ?>" name="<?php echo get_class($form); ?>" action="<?php echo url_for('@myprofile_update') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
+<?php if ($sf_user->hasFlash('notice')): ?>
+  <div class="flash_notice"><?php echo $sf_user->getFlash('notice') ?></div><br/><br/>
+<?php endif ?>
+<form id="<?php echo get_class($form); ?>" name="<?php echo get_class($form); ?>" action="<?php echo url_for('@myprofile_add_address') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
 	<input type="hidden" name="form_type" value="<?php echo get_class($form); ?>" />	
 	
 
-<?php echo __('I18N_ADDRESS')?><br/>
+<h1><?php echo __('I18N_ADDRESS_ADD')?></h1><br/>
 
 <?php echo __('I18N_COUNTRY')?><br/>
 <?php echo $form['country']->renderLabel(); ?>
@@ -32,14 +34,46 @@
 <!-- Protection contre les remplissage automatique -->
 <?php echo $form['_csrf_token']->render(); ?>
 </form>
+ <br/><br/>
+ 
+<h1><?php echo __('I18N_BILLING_ADDRESS')?></h1>
+<?php if($addressInfos=$customer->getBillingsAddress()):?>
+<form id="BillingsAddress" name="BillingsAddress" action="<?php echo url_for('@myprofile_update') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
+<input type="hidden" name="address" value="<?php echo $addressInfos['idcustomers_address_list'];?>" />
+<?php echo $addressInfos['address'];?><br/>
+<a href="#" class="discard-billing-address"><?php echo __('I18N_DISCARD_BILLINGS_ADDRESS');?></a><br/><br/>
+<?php endif;?>
 
 
-
-
+<h1><?php echo __('I18N_DELIVERY_ADDRESS')?></h1>
+<?php if($addressInfos=$customer->getDeliveryAddress()):?>
+<form id="DeliveryAddress" name="DeliveryAddress" action="<?php echo url_for('@myprofile_update') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
+<input type="hidden" name="address" value="<?php echo $addressInfos['idcustomers_address_list'];?>" />
+<?php echo $addressInfos['address'];?><br/>
+<a href="#" class="discard-delivery-address"><?php echo __('I18N_DISCARD_DELIVERY_ADDRESS');?></a><br/>
 <br/><br/>
-<?php echo __('You are logged in')?><br/><br/>
-<?php echo link_to1(__('My profile'),'http://profile.artworks.com/dev.php/fr/')?><br/>
-<?php echo link_to1(__('Change my password'),'@myprofile_change_password')?><br/>
-<?php echo link_to1(__('Change my addresses'),'@myprofile_change_addresses')?><br/>
-<?php echo link_to1(__('logout'), "@myprofile_logout")?>
+<?php endif;?>
+
+
+
+<h1><?php echo __('I18N_ADDRESS_LIST')?></h1>
+
+<?php foreach($customer->getAllMyAddresses() as $idcustomers_address_list => $address ):?>
+<form id="AllMyAddresses" name="<?php echo get_class($form); ?>" action="<?php echo url_for('@myprofile_update') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
+	<input type="hidden" name="form_type" value="AllMyAddresses" />
+	<input type="hidden" name="address" value="<?php echo $idcustomers_address_list?>" />
+		
+<br/>
+<?php echo $address;?><br/>
+<a href="#" class="delete-address"><?php echo __('I18N_DELETE_ADDRESS');?></a><br/>
+<a href="#" class="make-billing-address"><?php echo __('I18N_MAKE_BILLINGS_ADDRESS');?></a><br/>
+<a href="#" class="make-delivery-address"><?php echo __('I18N_MAKE_DELIVERY_ADDRESS');?></a><br/>
+
+</form>
+<?php endforeach;?>
+
+<?php include_partial("menu")?>
+
+
+
 

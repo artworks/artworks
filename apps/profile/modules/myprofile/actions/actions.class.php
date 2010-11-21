@@ -18,7 +18,7 @@ class myprofileActions extends sfActions
 	public function executeIndex(sfWebRequest $request)
 	{
 		$customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
-		$this->form = new CustomersProfileForm($customer);		 
+		$this->form = new CustomersProfileForm($customer);
 			
 	}
 
@@ -30,11 +30,11 @@ class myprofileActions extends sfActions
 	public function executeChangePassword(sfWebRequest $request)
 	{
 		$customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
-			 
+
 		$this->form = new CustomersPasswordForm($customer);
-		
+
 	}
-	
+
 	/**
 	 * Executes change password action
 	 *
@@ -42,12 +42,33 @@ class myprofileActions extends sfActions
 	 */
 	public function executeChangeAddresses(sfWebRequest $request)
 	{
-		//$customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
-			 
+		$this->customer = $customer = Doctrine::getTable('Customers')->findOneByIdCustomers($this->getUser()->getUserId());
+
 		$this->form = new CustomersAddressForm();
-		
+
+
+
 	}
-	
+
+	public function executeAddAddress(sfWebRequest $request)
+	{
+
+		$this->forward404Unless($request->isMethod(sfRequest::POST) || $request->isMethod(sfRequest::PUT));
+		$this->forward404Unless($this->customer = Doctrine::getTable('Customers')->findOneByIdcustomers($this->getUser()->getUserId()));
+
+
+		$form_type    = $request->getPostParameter('form_type');
+		$this->form = new $form_type();
+		$submit       = $this->processForm($request,$this->form );
+
+		switch($form_type){
+			case 'CustomersAddressForm' :
+				$this->setTemplate("changeAddresses");
+				break;
+		}
+
+
+	}
 
 	public function executeUpdate(sfWebRequest $request)
 	{
@@ -60,17 +81,17 @@ class myprofileActions extends sfActions
 		$submit       = $this->processForm($request,$this->form );
 
 		switch($form_type){
-				case 'CustomersPasswordForm' :
-					$this->setTemplate("changePassword");
-				break;	
-				case 'CustomersProfileForm' :
-					$this->setTemplate("index");
-				break;	
-				case 'CustomersAddressForm' :
-					$this->setTemplate("changeAddresses");
-				break;		
-			}
-		
+			case 'CustomersPasswordForm' :
+				$this->setTemplate("changePassword");
+				break;
+			case 'CustomersProfileForm' :
+				$this->setTemplate("index");
+				break;
+			case 'CustomersAddressForm' :
+				$this->setTemplate("changeAddresses");
+				break;
+		}
+
 
 	}
 
@@ -88,6 +109,55 @@ class myprofileActions extends sfActions
 
 
 	/**
+	 * Executes delete address action
+	 *
+	 * @param sfRequest $request A request object
+	 */
+	public function executeDeleteAddress(sfWebRequest $request)
+	{
+
+		$addressNode =  Doctrine_Query::create()
+		->from('CustomersAddressList cal')
+		->where('cal.idcustomers_address_list= ?',$request->getPostParameter('address'))
+		->andWhere('cal.FKidcustomersfromaddresslist = ?', $this->getUser()->getUserId())->fetchOne();
+
+		$addressNode->delete();
+
+		return $this->renderText(json_encode(array('result'=>'success')));
+
+
+	}
+
+	/**
+	 * Executes flag address action
+	 *
+	 * @param sfRequest $request A request object
+	 */
+	public function executeFlagAddress(sfWebRequest $request)
+	{
+
+		// set the flag off for the current flagged address
+		Doctrine_Query::create()
+		->update('CustomersAddressList cal')
+		->set('FKidaddress_type','?',3)
+		->where('cal.FKidaddress_type= ?',$request->getPostParameter('flag'))
+		->andWhere('cal.FKidcustomersfromaddresslist = ?', $this->getUser()->getUserId())->fetchOne();
+
+
+		// add the flag
+		$addressNode =  Doctrine_Query::create()
+		->from('CustomersAddressList cal')
+		->where('cal.idcustomers_address_list= ?',$request->getPostParameter('address'))
+		->andWhere('cal.FKidcustomersfromaddresslist = ?', $this->getUser()->getUserId())->fetchOne();
+
+		$addressNode->setFkidaddressType($request->getPostParameter('flag'));
+		$addressNode->save();
+			
+		return $this->renderText(json_encode(array('result'=>'success')));
+
+	}
+
+	/**
 	 * Executes processForm which post a form
 	 *
 	 * @param sfRequest $request A request object
@@ -100,16 +170,32 @@ class myprofileActions extends sfActions
 		$form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 		if ($form->isValid())
 		{
-			$form->save();
-			
+				
+				
 			switch(get_class($form)){
 				case 'CustomersPasswordForm' :
-					 $this->getUser()->setFlash('notice', sprintf('Your password has been changed.'));
- 				break;	
+					$this->getUser()->setFlash('notice', sprintf('Your password has been changed.'));
+					break;
 				case 'CustomersProfileForm' :
-					
-				break;			
+						
+					break;
+				case 'CustomersAddressForm' :
+					$this->forward404Unless($customer = Doctrine::getTable('Customers')->findOneByIdcustomers($this->getUser()->getUserId()));
+						
+					$buffer = GeolocationLib::httpWebservice($form->getValue('address').",".$form->getValue('town').",".$form->getValue('country') ,'json');
+					$json_geo_datas = json_decode($buffer);
+						
+					$customer->addAddress(
+					$json_geo_datas->results[$form->getValue('geo')]->geometry->location->lng,
+					$json_geo_datas->results[$form->getValue('geo')]->geometry->location->lat);
+						
+					$this->getUser()->setFlash('notice', sprintf('Address added'));
+						
+					$this->redirect('@myprofile_change_addresses');
+					break;
+						
 			}
+			$form->save();
 			$this->redirect('@homepage');
 
 		}
