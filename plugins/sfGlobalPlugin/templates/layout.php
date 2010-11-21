@@ -6,7 +6,9 @@
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
     <?php include_stylesheets() ?>
-    <?php include_javascripts() ?>
+	<?php echo dynamic_javascript_include_tag ('@js_index')  ?>    
+    <?php echo dynamic_javascript_include_tag ('@sfGlobalBasicActions_generated_js')  ?> 
+    <?php include_javascripts() ?>    
   </head>
   <body>
     <?php echo $sf_content ?>

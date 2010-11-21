@@ -1,0 +1,12 @@
+ # geo logics
+sfGlobalGeoActions_geo_search:
+  url:   /:sf_culture/geo/geosearch/*
+  param:  { module: sfGlobalGeoActions, action: geoSearch }
+  
+sfGlobalBasicActions_generated_js:
+  url:   /:sf_culture/js/global/generated.:sf_format
+  param: { module: sfGlobalBasicActions, action: generatedJs }
+  requirements:    
+    sf_culture: (?:fr|en) 
+    sf_method: get
+    sf_format: js
