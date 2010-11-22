@@ -42,7 +42,7 @@ homepage_send_credentials_confirmation:
 # default rules
 homepage:
   url:   /:sf_culture/
-  param: { module: homepage, action: welcome }
+  param: { module: homepage, action: index }
   
 homepage_no_culture:
   url:   /
