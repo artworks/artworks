@@ -1,5 +1,33 @@
+artists:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Artists
+    module:               artists
+    prefix_path:          /artists
+    column:               idartists
+    with_wildcard_routes: true
+
+artworks_artist:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Artworks
+    module:               artist
+    prefix_path:          /artist
+    column:               idartworks
+    with_wildcard_routes: true
+
+artworks:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Artworks
+    module:               artworks
+    prefix_path:          /artworks
+    column:               idartworks
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
+
 
 # default rules
 homepage:

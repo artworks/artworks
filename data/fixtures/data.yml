@@ -1,6 +1,23 @@
 AddressType:
   AddressType_1:
     label: BILLINGS
+  AddressType_2:
+    label: DELIVERY
+  AddressType_3:
+    label: SELECTION
+Artists:
+  Artists_1:
+    name: sparth
+Artworks:
+  Artworks_2:
+    Artists: Artists_1
+    description: fsqfqsf
+    photo: ''
+    updated_at: '2010-11-22 18:46:18'
+    created_at: '2010-11-22 18:46:18'
+ArtworkType:
+  ArtworkType_1:
+    label: photo
 Country:
   Country_1:
     label: AFGHANISTAN
@@ -801,13 +818,13 @@ CustomersAddressList:
     Geolocation: Geolocation_13
     Customers: Customers_7
     AddressType: AddressType_1
-  CustomersAddressList_7:
-    Geolocation: Geolocation_12
-    Customers: Customers_8
-    AddressType: AddressType_1
   CustomersAddressList_8:
     Geolocation: Geolocation_12
     Customers: Customers_9
+    AddressType: AddressType_1
+  CustomersAddressList_11:
+    Geolocation: Geolocation_18
+    Customers: Customers_8
     AddressType: AddressType_1
 CustomerStatus:
   CustomerStatus_10:
@@ -1503,6 +1520,16 @@ Geolocation:
     xml: null
     longitude: '-44.0553913'
     lattitude: '-19.919297'
+  Geolocation_16:
+    json: null
+    xml: null
+    longitude: '22.9749614'
+    lattitude: '60.865721'
+  Geolocation_18:
+    json: null
+    xml: null
+    longitude: '21.4853703'
+    lattitude: '39.1886719'
 Prospects:
   Prospects_8:
     company: _TEST_COMPANY_

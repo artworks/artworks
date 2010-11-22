@@ -12,5 +12,9 @@
  */
 class Artworks extends BaseArtworks
 {
-
+	public function setUp()
+	{
+		parent::setUp();
+		$this->actAs('Timestampable');
+	}
 }

@@ -16,18 +16,24 @@ abstract class BaseArtworksForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'idartworks'        => new sfWidgetFormInputHidden(),
-      'created_at'        => new sfWidgetFormDateTime(),
       'fkidartists'       => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Artists'), 'add_empty' => true)),
       'fkidartwork_style' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ArtworkStyle'), 'add_empty' => true)),
       'fkidartwork_type'  => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('ArtworkType'), 'add_empty' => true)),
+      'description'       => new sfWidgetFormTextarea(),
+      'photo'             => new sfWidgetFormInputText(),
+      'updated_at'        => new sfWidgetFormDateTime(),
+      'created_at'        => new sfWidgetFormDateTime(),
     ));
 
     $this->setValidators(array(
       'idartworks'        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('idartworks')), 'empty_value' => $this->getObject()->get('idartworks'), 'required' => false)),
-      'created_at'        => new sfValidatorDateTime(array('required' => false)),
       'fkidartists'       => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Artists'), 'required' => false)),
       'fkidartwork_style' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ArtworkStyle'), 'required' => false)),
       'fkidartwork_type'  => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('ArtworkType'), 'required' => false)),
+      'description'       => new sfValidatorString(array('required' => false)),
+      'photo'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'updated_at'        => new sfValidatorDateTime(),
+      'created_at'        => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('artworks[%s]');

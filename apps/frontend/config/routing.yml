@@ -1,6 +1,14 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+js_index:
+  url:   /:sf_culture/js/generated.:sf_format
+  param: { module: js, action: index }  
+  requirements:    
+    sf_culture: (?:fr|en) 
+    sf_method: get
+    sf_format: js
+
 autoconnect_index:
   url:   /autoconnect/:cryptuid/:hashcode/:crypttimelimit/:forwardurl
   param:  { module: autoconnect, action: index}
@@ -34,7 +42,7 @@ homepage_send_credentials_confirmation:
 # default rules
 homepage:
   url:   /:sf_culture/
-  param: { module: homepage, action: index }
+  param: { module: homepage, action: welcome }
   
 homepage_no_culture:
   url:   /

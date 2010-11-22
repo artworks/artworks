@@ -13,6 +13,7 @@ abstract class BaseOrdersHistoryFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'id'               => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'idorders'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'fkidorder_status' => new sfWidgetFormFilterInput(),
       'fkidorder_type'   => new sfWidgetFormFilterInput(),
@@ -21,6 +22,7 @@ abstract class BaseOrdersHistoryFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'id'               => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'idorders'         => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'fkidorder_status' => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'fkidorder_type'   => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),

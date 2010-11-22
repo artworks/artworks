@@ -20,8 +20,8 @@ Doctrine_Manager::getInstance()->bindComponent('Customers', 'doctrine');
  * @property string $surname
  * @property timestamp $created_at
  * @property timestamp $updated_at
- * @property DialingCodes $DialingCodes
  * @property CustomerStatus $CustomerStatus
+ * @property DialingCodes $DialingCodes
  * @property Gender $Gender
  * @property Doctrine_Collection $Basket
  * @property Doctrine_Collection $CustomersAddressList
@@ -39,8 +39,8 @@ Doctrine_Manager::getInstance()->bindComponent('Customers', 'doctrine');
  * @method string              getSurname()                       Returns the current record's "surname" value
  * @method timestamp           getCreatedAt()                     Returns the current record's "created_at" value
  * @method timestamp           getUpdatedAt()                     Returns the current record's "updated_at" value
- * @method DialingCodes        getDialingCodes()                  Returns the current record's "DialingCodes" value
  * @method CustomerStatus      getCustomerStatus()                Returns the current record's "CustomerStatus" value
+ * @method DialingCodes        getDialingCodes()                  Returns the current record's "DialingCodes" value
  * @method Gender              getGender()                        Returns the current record's "Gender" value
  * @method Doctrine_Collection getBasket()                        Returns the current record's "Basket" collection
  * @method Doctrine_Collection getCustomersAddressList()          Returns the current record's "CustomersAddressList" collection
@@ -57,8 +57,8 @@ Doctrine_Manager::getInstance()->bindComponent('Customers', 'doctrine');
  * @method Customers           setSurname()                       Sets the current record's "surname" value
  * @method Customers           setCreatedAt()                     Sets the current record's "created_at" value
  * @method Customers           setUpdatedAt()                     Sets the current record's "updated_at" value
- * @method Customers           setDialingCodes()                  Sets the current record's "DialingCodes" value
  * @method Customers           setCustomerStatus()                Sets the current record's "CustomerStatus" value
+ * @method Customers           setDialingCodes()                  Sets the current record's "DialingCodes" value
  * @method Customers           setGender()                        Sets the current record's "Gender" value
  * @method Customers           setBasket()                        Sets the current record's "Basket" collection
  * @method Customers           setCustomersAddressList()          Sets the current record's "CustomersAddressList" collection
@@ -194,13 +194,13 @@ abstract class BaseCustomers extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('DialingCodes', array(
-             'local' => 'fkiddialing_codefromcustomers',
-             'foreign' => 'iddialing_code'));
-
         $this->hasOne('CustomerStatus', array(
              'local' => 'fkidcustomer_status',
              'foreign' => 'idcustomer_status'));
+
+        $this->hasOne('DialingCodes', array(
+             'local' => 'fkiddialing_codefromcustomers',
+             'foreign' => 'iddialing_code'));
 
         $this->hasOne('Gender', array(
              'local' => 'fkidgender',

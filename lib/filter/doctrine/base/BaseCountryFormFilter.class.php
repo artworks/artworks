@@ -15,11 +15,13 @@ abstract class BaseCountryFormFilter extends BaseFormFilterDoctrine
     $this->setWidgets(array(
       'label'              => new sfWidgetFormFilterInput(),
       'fkiddelivery_areas' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('DeliveryAreas'), 'add_empty' => true)),
+      'country_code'       => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'label'              => new sfValidatorPass(array('required' => false)),
       'fkiddelivery_areas' => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('DeliveryAreas'), 'column' => 'iddelivery_areas')),
+      'country_code'       => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('country_filters[%s]');
@@ -42,6 +44,7 @@ abstract class BaseCountryFormFilter extends BaseFormFilterDoctrine
       'idcountry'          => 'Number',
       'label'              => 'Text',
       'fkiddelivery_areas' => 'ForeignKey',
+      'country_code'       => 'Text',
     );
   }
 }

@@ -16,12 +16,16 @@ abstract class BaseGeolocationFormFilter extends BaseFormFilterDoctrine
       'fkidcountry'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Country'), 'add_empty' => true)),
       'json'          => new sfWidgetFormFilterInput(),
       'xml'           => new sfWidgetFormFilterInput(),
+      'longitude'     => new sfWidgetFormFilterInput(),
+      'lattitude'     => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
       'fkidcountry'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Country'), 'column' => 'idcountry')),
       'json'          => new sfValidatorPass(array('required' => false)),
       'xml'           => new sfValidatorPass(array('required' => false)),
+      'longitude'     => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
+      'lattitude'     => new sfValidatorSchemaFilter('text', new sfValidatorNumber(array('required' => false))),
     ));
 
     $this->widgetSchema->setNameFormat('geolocation_filters[%s]');
@@ -45,6 +49,8 @@ abstract class BaseGeolocationFormFilter extends BaseFormFilterDoctrine
       'fkidcountry'   => 'ForeignKey',
       'json'          => 'Text',
       'xml'           => 'Text',
+      'longitude'     => 'Number',
+      'lattitude'     => 'Number',
     );
   }
 }

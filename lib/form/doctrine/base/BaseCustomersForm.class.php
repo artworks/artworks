@@ -42,8 +42,8 @@ abstract class BaseCustomersForm extends BaseFormDoctrine
       'password'                      => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'password_hash'                 => new sfValidatorString(array('max_length' => 45, 'required' => false)),
       'surname'                       => new sfValidatorString(array('max_length' => 45, 'required' => false)),
-      'created_at'                    => new sfValidatorDateTime(array('required' => false)),
-      'updated_at'                    => new sfValidatorDateTime(array('required' => false)),
+      'created_at'                    => new sfValidatorDateTime(),
+      'updated_at'                    => new sfValidatorDateTime(),
     ));
 
     $this->widgetSchema->setNameFormat('customers[%s]');

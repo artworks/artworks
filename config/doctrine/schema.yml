@@ -96,13 +96,6 @@ Artworks:
       unsigned: false
       primary: true
       autoincrement: true
-    created_at:
-      type: timestamp(25)
-      fixed: false
-      unsigned: false
-      primary: false
-      notnull: false
-      autoincrement: false
     fkidartists:
       type: integer(4)
       fixed: false
@@ -119,6 +112,34 @@ Artworks:
       autoincrement: false
     fkidartwork_type:
       type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    description:
+      type: string()
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    photo:
+      type: string(255)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    updated_at:
+      type: timestamp(25)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
+    created_at:
+      type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
