@@ -68,6 +68,7 @@ class Customers extends BaseCustomers
 		$addresses_list = array();
 		if (count($q=$this->getAddressesQuery(array(1,2,3))->fetchArray())){
 			foreach ($q as $key=>$address){
+			
 			$buffer = GeolocationLib::httpWebserviceReverseGeocoding($address['lattitude'],$address['longitude'],'json');
 			$geo_datas = json_decode($buffer);
 	

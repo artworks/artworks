@@ -186,8 +186,8 @@ class myprofileActions extends sfActions
 					$json_geo_datas = json_decode($buffer);
 						
 					$customer->addAddress(
-					$json_geo_datas->results[$form->getValue('geo')]->geometry->location->lng,
-					$json_geo_datas->results[$form->getValue('geo')]->geometry->location->lat);
+					$json_geo_datas->results[$form->getValue('geo')]->geometry->location->lat,
+					$json_geo_datas->results[$form->getValue('geo')]->geometry->location->lng);
 						
 					$this->getUser()->setFlash('notice', sprintf('Address added'));
 						
