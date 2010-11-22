@@ -1,0 +1,159 @@
+/* 
+Credits: Bit Repository
+*/
+
+#form-area {width:500px; overflow: hidden; font-size: 12px; padding: 0; border: 0px none; }
+
+#form-area h1, #form-fields h1 {
+	margin-bottom: 15px;
+	padding-bottom:  3px;
+	border-bottom: thin #CCC solid;
+}
+
+#form-fields {
+	width:430px;
+	min-height: 260px;
+/* 	background-color: #F2F2F2; */
+	overflow: hidden;
+	padding: 15px;
+	margin-right:6px;
+	margin-bottom:6px;
+	    -moz-border-radius: 10px; 
+        -webkit-border-radius:  10px; 
+        border-radius:  10px;    
+        -webkit-border-top-left-radius: 10px; /* pour chrome */ 
+        -webkit-border-top-right-radius: 10px; /* pour chrome */
+		-webkit-border-bottom-left-radius: 10px; /* pour chrome */ 
+        -webkit-border-bottom-right-radius: 10px; /* pour chrome */
+		behavior: url('/css/border-radius.htc');
+	border: 1px solid #CCC;
+	}
+
+#form-note { width: 300px; display:none; height:20px; font-size:12px; margin:0; padding:0; padding-top:20px;}
+
+.notification_ok { padding:0; margin:0; }
+.notification_error { color: #bf2525; padding:0; margin:0; }
+
+.hide { display:none; }
+
+div.escts { padding-top:0px; }
+
+
+#form-fields div.row {
+ 	clear: both;
+/* 	padding-top: 10px; */
+ }
+
+#form-fields div.row span.label {
+ 	float: left;
+ 	width: 350px;
+ }
+#form-fields div.row span.data {
+	float: left;
+ 	width: 200px;
+ }
+#form-fields div.row span.verif {
+	float: right;
+ 	width: 200px;
+/*  	padding-left: 230px; */
+ }
+
+/* Label */
+#form-fields label { 
+/* 	display: inline; */
+	font-size:18px;
+	line-height: 25px;
+	margin:0;
+	padding:0;
+	 }
+
+
+/* Input, Textarea */
+
+#form-fields input[type="text"], input[type="password"] { 
+	display: block;
+	width: 195px;
+	height: 18px;
+	float: left;
+	text-align: left;
+	padding: 1px 9px 4px 9px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf;
+	margin-bottom:10px;
+	margin-top: 0px;
+	 }
+#form-fields textarea { 
+display: block;
+	width: 434px;
+	height: 107px;
+	clear: both;
+	border: 0;
+	padding:9px;
+	margin-bottom:10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf; }
+#form-fields select { 
+display: block;
+	width: 215px;
+	height: 22px;
+	clear: both;
+	border: 0;
+	padding:9px;
+	margin-bottom:10px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf; }
+#form-fields input.error { padding: 4px 9px 4px 9px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #fd9c9c;}
+#form-fields select.error { padding: 4px 9px 4px 9px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #fd9c9c; }
+#form-fields textarea.error { padding:9px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #fd9c9c; }
+
+#form-fields input.ok { -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf; }
+#form-fields select.ok { -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf; }
+#form-fields textarea.ok { -webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf; }
+
+#form-fields label.error { 
+	display: none;
+ }
+
+#ajax-loading { margin:0; margin-left:0px; display: none; background: none; }
+
+*:focus { outline: none; }
+
+#form-area em {
+	font-style: normal;
+}

@@ -48,7 +48,7 @@
 <!-- Begin Header -->
 <div id="header">
   <!-- Begin Logo -->
-  <div id="logo"><a href="#"><img src="/images/LOGO_TEMP.png" alt="Art-Love-You.com" /></a></div>
+  <div id="logo"><a href="#"><img src="/images/artloveyou.png" alt="Art-Love-You.com" /></a></div>
   <!-- End Logo -->
   
   <!-- Begin Menu -->
@@ -114,64 +114,92 @@
 <!--End Container -->
 
 
-<!-- Begin Footer -->
+<!-- Begin Footer --> 
 <div id="footer">
   <div class="footer-content">
-    <div class="col3-wrap">
     
-       <!-- Begin Recent Posts -->
-      <div class="col3">
-        <h2 class="recentposts">Blog Lasts Posts</h2>
-        <ul class="unordered">
-          <li><a href="#">News sur blog</a></li>
-          <li><a href="#">News sur blog</a></li>
-          <li><a href="#">News sur blog</a></li>
-          <li><a href="#">News sur blog</a></li>
-          <li><a href="#">News sur blog</a></li>
-        </ul>
-      </div>
-      <!-- Begin Recent Posts -->
+<div class="one-third">
+        <h2 class="recentposts">Art Blog You</h2>
+        <ul class="bullet">
+          <li><a href="#">Duis id tellus at eros tempor imper.</a></li>
+          <li><a href="#">Aenean ligula nisl, fermentum vel lobortis id, scelerisque at lorem.</a></li>
+          <li><a href="#">Suspendisse nec neque ut nunc rhoncus sodales.</a></li>
+          <li><a href="#">Duis id Nam pulvinar faucibus dui.</a></li>
+        </ul>    
+</div>
       
-      <!-- Begin Tags -->
-      <div class="col3">
+<div class="one-third">
+
+		<h2 class="tags">Newsletter</h2>
+		<p>Join Our Newsletter</p>
+      		<div class="newsletter">
+      			<form method="get" id="newsletter" action="">     			
+        			<input type="text" value="Your E-Mail Adress" class="newsletterbar" />
+        			<button type="submit">Join</button>
+      			</form>
+  			</div>
+        
+          <div class="clearfix"></div>  
+		<p></p> 
+		         
         <h2 class="tags">Tags</h2>
         <ul class="tags">
           <li><a href="#">Art</a></li>
           <li><a href="#">Artworks</a></li>
           <li><a href="#">Artistes</a></li>
           <li><a href="#">Exhibition</a></li>
+          <li><a href="#">Photography</a></li>
+          <li><a href="#">Web Design</a></li>
+          <li><a href="#">Illustration</a></li>
         </ul>
 
-      </div>
-      <!-- End Tags -->
-      
-      <!-- Begin Twitter -->
-      <div class="col3">
-        <h2 class="twit">Twitter</h2>
-        <div class="twitter">
-          <div class="twitter-top"></div>
-          <div class="twitter-mid">
-            <div class="message" id="twitter"></div>
-            <!-- Twitter --> 
-          </div>
-          <div class="twitter-bottom"></div>
-        </div>
-      </div>
-      <!-- End Twitter -->
-    </div>
-  </div>
+        
 </div>
-<!-- End Footer -->
+
+
+    
+<div class="one-third last">
+		<h2 class="tags">Contact US</h2>
+  <div class="information">
+    <ul class="contact-info">
+      <li class="home">Lorem Avenue Ipsum Street No:11/21</li>
+      <li class="tel">+66 555 - 444 33 22</li>
+      <li class="mail"><a href="#">Formulaire de Contact</a></li>
+    </ul>
+  </div>
+  
+</div>
+
+  		
+      </div><!--End Footer Content -->
+    </div><!--End Footer -->
+<!-- #Footer --> 
+
 
 <!-- Begin Footer Bottom -->
 <div id="footer-bottom">
-  <div id="footer-bottom-light"></div>
-  <div class="footer-bottom-content">
-    <div class="copyright">
-      <p>&copy; Copyright 2010 Art Love You. All Rights Reserved.</p>
-    </div>
-    <div class="social"> <a href="#"><img src="/images/social1.png" alt="Facebook" /></a> <a href="#"><img src="/images/social6.png" alt="RSS" /></a> </div>
-  </div>
+	<div id="footer-bottom-light"></div>
+  		<div class="footer-bottom-content">
+  
+        		<div class="copyright">
+      <p>&copy; Copyright 2010 Art Love You. All Rights Reserved.</p>   			
+				</div><!-- End copyright --> 
+
+      		<div class="partner">
+
+<a href="#"><img src="/images/visa-curved-32px.png" alt="VISA" /></a>
+<a href="#"><img src="/images/mastercard-curved-32px.png" alt="Mastercard" /></a>
+<a href="#"><img src="/images/american-express-curved-32px.png" alt="American Express" /></a>
+
+
+			</div><!-- End Partner --> 
+					
+      		<div class="social">
+<a href="#"><img src="/images/social1.png" alt="Facebook" /></a> <a href="#"><img src="/images/social6.png" alt="RSS" /></a>
+			</div><!-- End social --> 
+			
+		</div>
+	</div>
 </div>
 <!-- End Footer Bottom --> 
 

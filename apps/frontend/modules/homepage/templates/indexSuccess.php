@@ -4,7 +4,7 @@
     <div class="rap">
     
     	<!-- First -->
-      <div> <div class="pic"><img src="/images/6401.jpg" alt="" /></div> 
+      <div> <div class="pic"><img src="/images/locusfeature.jpg" alt="" /></div> 
       <div class="description">
         <h2>Art is Possible</h2>
         <p> Morbi est elit, imperdiet sit amet pharetra eget, egestas in leo. Ut quis risus elit. Nunc semper aliquet nisl ut iaculis. Vivamus tristique odio et dui convallis dapibus ornare diam mattis. Proin non commodo elit. Nulla hendrerit dui id orci hendrerit quis mollis urna sollicitudin. </p>
@@ -12,7 +12,7 @@
         </div> </div>
         
         <!-- Second -->
-      <div> <div class="pic"><img src="/images/6402.jpg" alt="" /></div> 
+      <div> <div class="pic"><img src="/images/locusfeature.jpg" alt="" /></div> 
       <div class="description">
         <h2>Buy Art - Bests Prestations</h2>
         <p> Morbi sed lectus nibh. Ut vel est elit. Integer velit urna, vulputate sit amet euismod sit amet, convallis ut risus. Curabitur at mauris at velit laoreet semper sed at odio. Nam bibendum sagittis tortor a volutpat. Etiam non leo purus, ut elementum libero. Aenean vitae quam leo, eu rutrum tellus. </p>
@@ -28,7 +28,7 @@
         </div> </div>
         
         <!-- Fourth -->
-      <div> <div class="pic"><img src="/images/6402.jpg" alt="" /></div> 
+      <div> <div class="pic"><img src="/images/locusfeature.jpg" alt="" /></div> 
         <div class="description">
         <h2>Art On Demand - Customize It !</h2>
         <p> Morbi sed lectus nibh. Ut vel est elit. Integer velit urna, vulputate sit amet euismod sit amet, convallis ut risus. Curabitur at mauris at velit laoreet semper sed at odio. Nam bibendum sagittis tortor a volutpat. Etiam non leo purus, ut elementum libero. Aenean vitae quam leo, eu rutrum tellus. </p>
@@ -44,7 +44,7 @@
         </div> </div>
         
         <!-- Six -->
-      <div> <div class="pic"><img src="/images/6402.jpg" alt="" /></div> 
+      <div> <div class="pic"><img src="/images/locusfeature.jpg" alt="" /></div> 
         <div class="description">
         <h2>Art Blog You !</h2>
         <p> Morbi sed lectus nibh. Ut vel est elit. Integer velit urna, vulputate sit amet euismod sit amet, convallis ut risus. Curabitur at mauris at velit laoreet semper sed at odio. Nam bibendum sagittis tortor a volutpat. Etiam non leo purus, ut elementum libero. Aenean vitae quam leo, eu rutrum tellus. </p>

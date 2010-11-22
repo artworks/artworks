@@ -16,6 +16,5 @@ default:
 
   javascripts:    [jquery,signup, jquery-1.4.2.min, faded2, ddsmoothmenu, sliding_effect, twitter.min, zoombox, ticker, jquery.json-1.3.min, scripts]
 
-
   has_layout:     true
   layout:         layout

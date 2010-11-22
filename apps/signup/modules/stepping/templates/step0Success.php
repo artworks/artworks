@@ -1,21 +1,19 @@
 <div class="one-half">
-
     <div class="rect_area">  
-      <h1>Create your Account</h1>
+      <h1>Creer un compte</h1>
     <h2>Do You Love Art ? Join US !</h2>
-    <p>Comment ca marche ?. Tu crees un compte. Tu deviens membre et tu peux : consulter le prix de nos oeuvres, gerer ta propre selection, ton carnet d adresses, acheter des oeuvres simplement, rapidement et sur notre site totalement securise.</p>
+    <p>Comment ca se fonctionne ? Vous creez un compte. Vous devenez membre et vous pouvez : consulter le prix de nos oeuvres, gerer ta propre selection, ton carnet d adresses, acheter des oeuvres simplement, rapidement et sur notre site totalement securise.</p>
 	<p>Tu peux automatiquement participer a notre Magazine d'Art.</p>    
-    </div>
-					<div class="note-box">
+<div class="note-box">
 Tu as deja un compte ? <a href="http://www.artworks.com/fr/signin">Connecte-Toi</a>
 </div>		
+    </div>
 
 </div>
 <div class="one-half last">
-
 	    <div id="form-area">
-<h1>Etape 1</h1>
-	    		    <div id="form-fields">
+	 <div id="form-fields">
+		<h1>Etape 1</h1>
 <form id="signup_form" name="signup_form" action="<?php echo url_for(($form->getObject()->isNew() ? '@stepping_create' : '@stepping_update')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
 	<input type="hidden" name="form_type" value="<?php echo get_class($form); ?>" />	
 	<?php if (!$form->getObject()->isNew()): ?>
@@ -23,7 +21,9 @@ Tu as deja un compte ? <a href="http://www.artworks.com/fr/signin">Connecte-Toi<
 	<?php endif; ?>
  
 <div class="row">
-<?php echo $form['email']->renderLabel(null, array('class' => 'label')); ?>
+	<span class="label">	
+<?php echo $form['email']->renderLabel(null, array()); ?>
+	</span>
 </div>
 <div class="row">
 	<span class="data">		

@@ -1,0 +1,77 @@
+#footer ul.tags {
+	padding:0;
+	margin:0;
+	height: 8px;
+	line-height: 10px;
+	white-space:nowrap;
+}
+#footer ul.tags li {
+	background-image:none;
+	padding:0;
+	margin: 0;
+	height: 25px;
+	float: left;
+	padding: 3px 8px 5px 8px;
+}
+#footer ul.tags li a {
+	padding: 3px 8px 5px 8px;
+	margin:0;
+}
+.twitter {
+	display: block;
+	margin-top:18px;
+}
+h1.intro span {
+	margin-right:0px;
+	margin-top: -15px;
+}
+h3.intro span {
+	margin-right:0px;
+	margin-top: -15px;
+}
+h2.about {
+	line-height: 34px;
+}
+.ddsmoothmenu ul li ul li a {
+	font-family:'QlassikBoldRegular', Tahoma, Arial, sans-serif;
+	text-shadow: none;
+}
+.ddsmoothmenu ul li ul li a {
+	padding: 3px 0px 0px 0px;
+}
+.acf-fields .clear {
+	margin-bottom:-10px;
+}
+.map {
+	padding-top:14px;
+}
+.ddsmoothmenu ul li ul {
+	left:0;
+	padding-left:10px;
+	padding-right:0px;
+}
+.ddsmoothmenu ul li ul li {
+	display: none;
+	display:inline;
+}
+/* Sub level menu links style */
+.ddsmoothmenu ul li ul li a {
+	font-family:'QlassikMediumRegular', Tahoma, Arial, sans-serif;
+	text-shadow: 0px 1px 0px #ffffff;
+	width: 140px; /*width of sub menus*/
+	margin: 0;
+	margin-left:0px;
+	color: #525252;
+	font-size:14px;
+	font-weight: normal;
+	line-height: 25px;
+	height: 30px;
+}
+.ddsmoothmenu ul li ul li ul {
+	top: 0;
+	margin:0;
+	margin-left:15px;
+}
+ul.pagi {
+	display: inline;
+}

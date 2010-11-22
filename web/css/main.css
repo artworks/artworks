@@ -17,8 +17,7 @@ body {
     background-image:url(/images/bg1.jpg);
 	color: #3a3a3a;
 	font-family: Tahoma, "Trebuchet MS", Arial, sans-serif;
-	font-size: 13px;
-	line-break: 20px;
+	font-size: 12px;
 }
 html, body {
 	height: 100%;
@@ -116,7 +115,7 @@ ul.frame {
 	text-align: center;
 }
 p {
-	padding-bottom:10px;
+	margin-bottom:20px;
 	font-size: 13px;
 	line-height:20px;
 }
@@ -227,7 +226,7 @@ h3.intro span {
 /* rect_area STYLES */
 /* ----------------------------------------- */
 .rect_area, .rect_area_small {
-	background-color: white;
+/* 	background-color: #F2F2F2; */
 	overflow: hidden;
 	padding: 15px;
 	margin-right:6px;
@@ -244,7 +243,7 @@ h3.intro span {
 }
 .rect_area {
 	width:430px;
-	min-height: 300px;
+	min-height: 260px;
 }
 .rect_area_small {
 	width:250px;
@@ -252,7 +251,7 @@ h3.intro span {
 .rect_area h1, .rect_area_small h1{
 	margin-bottom: 15px;
 	padding-bottom:  3px;
-	border-bottom: thin silver solid;
+	border-bottom: thin #CCC solid;
 }
 .rect_area img {
 	padding:9px;
@@ -310,7 +309,7 @@ ul.check2 li, ul.bullet2 li {
 	line-height:20px;
 }
 
-/* MORE BUTTON & PAGE NAVIGATIONS */
+/* PAGE NAVIGATIONS */
 /* ----------------------------------------- */
 
 a.more {
@@ -413,6 +412,27 @@ ul.pagenavi li a:hover, ul.pagenavi li a.current {
 /* BUTTONS */
 /* ----------------------------------------- */
 
+button {
+	background: transparent url(/images/btn.png) no-repeat 0 0px;
+	width: 67px;
+	height: 31px;
+	text-align: center;
+	display: block;
+	padding:6px;
+	padding-bottom: 5px;
+	padding-top:6px;
+	font-size: 16px;
+	color: #000;
+	font-weight: normal;
+	cursor: pointer;
+	font-family:'QlassikMediumRegular', Tahoma, Arial, sans-serif;
+	text-shadow: 0px 1px 0px #ffffff;
+}
+button:hover {
+	background: transparent url(/images/btn.png) no-repeat 0 -31px;
+	width: 67px;
+	height: 31px;
+}
 .view {
 	width:121px;
 	margin:5px auto 0;
@@ -428,7 +448,7 @@ ul.pagenavi li a:hover, ul.pagenavi li a.current {
 	background-repeat: no-repeat;
 	font-size: 18px;
 	font-weight: normal;
-	color: #3a3a3a;
+	color: #000;
 	cursor: pointer;
 	font-family:'QlassikMediumRegular', Tahoma, Arial, sans-serif;
 	text-shadow: 0px 1px 0px #ffffff;
@@ -609,13 +629,11 @@ ul.pagenavi li a:hover, ul.pagenavi li a.current {
 
 #header {
 	width: 960px;
-	margin: 40px auto 50px;
+	margin: 10px auto 10px;
 }
 #logo {
 	float:left;
 }
-
-
 #logo a {
 	float:left;
 	font-family:'QlassikMediumRegular', Tahoma, Arial, sans-serif;
@@ -1162,7 +1180,7 @@ float:left;
 #tab {
 	padding: 0px;
 	margin: 30px 0 0 0;
-	width:270px;
+	width:600px;
 }
 #tab .nav {
 	overflow: hidden;
@@ -1180,13 +1198,13 @@ float:left;
 #tab .nav li a {
 	display: block;
 	color: #3a3a3a;
-	font-size: 16px;
+	font-size: 18px;
 	line-height:30px;
 	text-align: center;
 	border: 0;
 	font-weight: normal;
-	width:80px;
-	height:31px;
+	width:120px;
+	height:50px;
 	background: transparent url(/images/smallbutton.png) no-repeat 0 0;
 	text-align: center;
 }
@@ -1557,31 +1575,6 @@ pre {
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
 	border-radius: 8px;
-}
-
-/* SPECIAL BUTTON */
-/* ----------------------------------------- */
-
-button {
-	background: transparent url(/images/btn.png) no-repeat 0 0px;
-	width: 67px;
-	height: 31px;
-	text-align: center;
-	display: block;
-	padding:6px;
-	padding-bottom: 5px;
-	padding-top:6px;
-	font-size: 16px;
-	color: #3a3a3a;
-	font-weight: normal;
-	cursor: pointer;
-	font-family:'QlassikMediumRegular', Tahoma, Arial, sans-serif;
-	text-shadow: 0px 1px 0px #ffffff;
-}
-button:hover {
-	background: transparent url(/images/btn.png) no-repeat 0 -31px;
-	width: 67px;
-	height: 31px;
 }
 
 /* PORTFOLIO - QUICKSAND */
@@ -2214,22 +2207,22 @@ h2.active {
 	padding-bottom:2px;
 }
 .tabbed-content {
-	width: 500px;
+	width: 100%;
 }
 ul.tabs {
 	margin: 0;
 	padding: 0;
 	float: left;
 	list-style: none;
-	height: 26px;
+	height: 40px;
 	width: 100%;
 }
 ul.tabs li {
 	float: left;
 	margin: 0 5px 1px 0;
 	padding: 0;
-	height: 25px;
-	line-height: 25px;
+	height: 40px;
+	line-height: 40px;
 	-webkit-border-top-left-radius: 8px;
 	-webkit-border-top-right-radius: 8px;
 	-webkit-border-bottom-right-radius: 0px;
@@ -2252,7 +2245,7 @@ ul.tabs li a {
 	text-decoration: none;
 	color: #3a3a3a;
 	display: block;
-	font-size: 12px;
+	font-size: 18px;
 	padding: 0 15px;
 	outline: none;
 }
@@ -2289,10 +2282,11 @@ html ul.tabs li.active, html ul.tabs li.active a:hover {
 	border-bottom: 1px solid white;
 }
 .tab_container {
+	padding:20px;
 	border: 1px solid #cfcfcf;
 	clear: both;
 	float: left;
-	width: 100%;
+	width: 900px;
 	background: #fff;
 	-webkit-border-top-left-radius: 0px;
 	-webkit-border-top-right-radius: 8px;

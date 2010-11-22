@@ -1,0 +1,15 @@
+#fields label.error { margin: 0px 0px 9px 158px; }
+#fields .button { cursor: hand; }
+
+#acf-fields input[type="text"] { float:right;
+	width:289px;
+	height:22px;;
+	padding-left:10px;
+	padding-right:10px;
+	padding-top:10px;
+	padding-bottom:0px;
+	 }
+	
+.clear {
+	display:none;
+}

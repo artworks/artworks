@@ -1,7 +1,7 @@
 <div class="one-half">
-<h1>Sign In</h1>
 	    <div id="form-area">
 	    		    <div id="form-fields">
+	    			<h1>Sign In</h1>
 <form id="<?php echo get_class($form)?>" name="<?php echo get_class($form)?>" action="<?php echo url_for('homepage/signin') ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
 	<input type="hidden" name="form_type" value="<?php echo get_class($form); ?>" />	
 
@@ -29,10 +29,10 @@
 	</span>
 </div>
 
-<div class="row">
-	<span class="data">	               
-<button type="submit"><?php echo __('I18N_VALIDATE', null, 'stepping');?></button>
-	</span>
+<div class="row">          
+<button type="submit"><?php echo __('Valider', null, 'stepping');?></button>
+</div>
+<div class="row">          
 	<span class="verif">
 	<!-- Protection contre les remplissage automatique -->
 <?php echo $form['_csrf_token']->render(); ?>
@@ -53,11 +53,11 @@
 <div class="one-half last">
 
       <!-- Begin Frame -->
-    <h1>You Don't Have Account ?</h1>
-    <div class="rect_area">  
-    <h2>Do You Love Art ? Join US !</h2>
-    <p>What Are U waiting For ? 5 minutes are enough to be official in Love With Art...</p>
-        <p>What Are U waiting For ? 5 minutes are enough to be official in Love With Art...</p>
+    <div class="rect_area"> 
+    <h1>Vous n etes pas encore membre ?</h1> 
+    <h2>Vous aimez l'Art ? Rejoingnez-nous.</h2>
+    <p>3 minutes suffisent pour devenir un membre officielle de la communautre des amoureux de l Art.
+    Une fois inscrit et connecte vous pourrez decouvrir le prix de nos oeuvres, acheter en toute securite et composer votre collection d'oeuvres favorites...</p>
 <div class="row">
 	<a class="button" href="http://signup.artworks.com/fr/step0">Creer Ton Compte<span></span></a>
 </div>

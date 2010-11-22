@@ -1,0 +1,130 @@
+.jcarousel-container {
+	margin-bottom:70px;
+	display: block;
+	overflow: hidden;
+}
+.carousel p {
+	font-size: 13px;
+	line-height:19px;
+	color:#747474;
+}
+.carousel img {
+	display:block;
+}
+.pcarousel h2 {
+	margin-left:47px;
+}
+.jcarousel-direction-rtl {
+	direction: rtl;
+}
+.jcarousel-container-horizontal {
+	width: 870px;
+	padding: 0 45px;
+}
+.sgrid .jcarousel-clip-horizontal {
+	width:  870px;
+	height: 150px;
+}
+.jcarousel-item {
+	width: 180px;
+	height: 300px;
+	padding: 14px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf;
+}
+.sgrid .jcarousel-item {
+	width: 180px;
+	height: 120px;
+	padding: 14px;
+	-webkit-border-radius: 8px;
+	-moz-border-radius: 8px;
+	border-radius: 8px;
+	background-color: white;
+	border: 1px solid #cfcfcf;
+}
+.jcarousel-item-horizontal {
+	margin-left: 0;
+	margin-right: 10px;
+}
+.jcarousel-direction-rtl .jcarousel-item-horizontal {
+	margin-left: 10px;
+	margin-right: 0;
+}
+.jcarousel-item-placeholder {
+	background: #fff;
+	color: #000;
+}
+/**
+ *  Horizontal Buttons
+ */
+.jcarousel-next-horizontal {
+	position: absolute;
+	top: 149px;
+	right: 0;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	background: transparent url(../images/pnav.png) no-repeat top right;
+}
+.sgrid .jcarousel-next-horizontal {
+	position: absolute;
+	top: 60px;
+	right: 0;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	background: transparent url(../images/pnav.png) no-repeat top right;
+}
+.jcarousel-direction-rtl .jcarousel-next-horizontal {
+	left: 5px;
+	right: auto;
+	background-image: url(../images/pnav.png);
+}
+.jcarousel-next-horizontal:hover {
+	background-position: center right;
+}
+.jcarousel-next-horizontal:active {
+	background-position: top right;
+}
+.jcarousel-next-disabled-horizontal, .jcarousel-next-disabled-horizontal:hover, .jcarousel-next-disabled-horizontal:active, .sgrid .jcarousel-next-disabled-horizontal, .sgrid .jcarousel-next-disabled-horizontal:hover, .sgrid .jcarousel-next-disabled-horizontal:active {
+	width: 32px;
+	height: 32px;
+	background: transparent url(../images/pnav.png) no-repeat bottom right;
+}
+.jcarousel-prev-horizontal {
+	position: absolute;
+	top: 149px;
+	left: 0;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	background: transparent url(../images/pnav.png) no-repeat top left;
+}
+.sgrid .jcarousel-prev-horizontal {
+	position: absolute;
+	top: 60px;
+	left: 0;
+	width: 32px;
+	height: 32px;
+	cursor: pointer;
+	background: transparent url(../images/pnav.png) no-repeat top left;
+}
+.jcarousel-direction-rtl .jcarousel-prev-horizontal {
+	left: auto;
+	right: 5px;
+	background-image: url(../images/pnav.png);
+}
+.jcarousel-prev-horizontal:hover {
+	background-position: center left;
+}
+.jcarousel-prev-horizontal:active {
+	background-position: top left;
+}
+.jcarousel-prev-disabled-horizontal, .jcarousel-prev-disabled-horizontal:hover, .jcarousel-prev-disabled-horizontal:active, .sgrid .jcarousel-prev-disabled-horizontal, .sgrid .jcarousel-prev-disabled-horizontal:hover, .sgrid .jcarousel-prev-disabled-horizontal:active {
+	width: 32px;
+	height: 32px;
+	background: transparent url(../images/pnav.png) no-repeat bottom left;
+}

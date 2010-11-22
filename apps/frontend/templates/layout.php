@@ -51,7 +51,7 @@
 <!-- Begin Header -->
 <div id="header">
   <!-- Begin Logo -->
-  <div id="logo"><a href="#"><img src="/images/LOGO_TEMP.png" alt="Art-Love-You.com" /></a></div>
+  <div id="logo"><a href="#"><img src="/images/logo_idea.png" alt="Art-Love-You.com" /></a></div>
   <!-- End Logo -->
   
   <!-- Begin Menu -->

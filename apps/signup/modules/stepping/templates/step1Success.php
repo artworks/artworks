@@ -1,20 +1,41 @@
-<div class="two-third">
-	    <div id="form-area2">
-<h1>Signup Step 2</h1>
+<div class="one-half">
+
+    <div class="rect_area">
+<h1>About Signup</h1>
+<div class="toggle">
+	<h2 class="trigger">Adress</h2>
+		<div class="togglebox">
+			<p>Informations sur l adresse Postale</p>
+		</div>
+			<h2 class="trigger">Geolocalisation</h2>
+		<div class="togglebox">
+			<p>Informations sur la geolocatisation</p>
+		</div>
+			<h2 class="trigger">Profil</h2>
+		<div class="togglebox">
+			<p>Une fois votre compte creee vous pourrez modifier ces informations et votre carnet d adresses postales</p>
+		</div>
+	</div>
+</div>
+
+</div><!-- End one half -->
+
+<div class="one-half last">
+	    <div id="form-area">
 	    		    <div id="form-fields">
+<h1>Signup Step 2</h1>
 <form id="signup_form" name="signup_form" action="<?php echo url_for(($form->getObject()->isNew() ? '@stepping_create' : '@stepping_update')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?> >
 	<input type="hidden" name="form_type" value="<?php echo get_class($form); ?>" />	
 	<?php if (!$form->getObject()->isNew()): ?>
 	<input type="hidden" name="sf_method" value="put" />
 	<?php endif; ?>
 
-
 <div class="row">
 <?php __('I18N_GENDER')?>
 </div>
 
 <div class="row">
-<?php echo $form['fkidgenderfromprospect']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['fkidgenderfromprospect']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -26,7 +47,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['company']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['company']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -38,7 +59,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['name']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['name']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -50,7 +71,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['surname']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['surname']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -62,7 +83,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['fkiddialing_codefromprospects']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['fkiddialing_codefromprospects']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -74,7 +95,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['phone']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['phone']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -94,7 +115,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['country']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['country']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -110,7 +131,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['town']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['town']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -126,7 +147,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['address']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['address']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -142,7 +163,7 @@
 </div>
 
 <div class="row">
-<?php echo $form['geo']->renderLabel(null, array('class' => 'label')); ?>
+<?php echo $form['geo']->renderLabel(null, array()); ?>
 </div>
 <div class="row">
 	<span class="data">	
@@ -163,25 +184,4 @@
 </form>
 					</div>	
 			</div>	
-
-</div>
-<div class="one-third last">
-    <div class="rect_area_small"> 
-<h1>About Signup</h1>
-<div class="toggle">
-	<h2 class="trigger">Adress</h2>
-		<div class="togglebox">
-			<p>Informations sur l adresse Postale</p>
-		</div>
-			<h2 class="trigger">Geolocalisation</h2>
-		<div class="togglebox">
-			<p>Informations sur la geolocatisation</p>
-		</div>
-			<h2 class="trigger">Profil</h2>
-		<div class="togglebox">
-			<p>Une fois votre compte creee vous pourrez modifier ces informations et votre carnet d adresses postales</p>
-		</div>
-	</div>
-</div>
-
-</div>
+</div><!-- End one half last-->
