@@ -1,0 +1,14 @@
+
+echo 'rebuild the database,the model, the forms, the filters, and load the fixture'
+
+php symfony doctrine:build --all --no-confirmation  --and-load 
+
+echo 'database rebuilded'
+echo 'all entity rebuilded'
+
+php symfony cc
+
+/usr/local/mysql/bin/mysql --user=root artworks \
+< $HOME/Sites/artworks/data/sql/migrate_prospects_to_customers.sql
+
+echo 'Stored procedure migrate_prospects_to_customers has been created' 
