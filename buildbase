@@ -9,6 +9,6 @@ echo 'all entity rebuilded'
 php symfony cc
 
 /usr/local/mysql/bin/mysql --user=root artworks \
-< $HOME/Sites/artworks/data/sql/migrate_prospects_to_customers.sql
+< $PWD/data/sql/migrate_prospects_to_customers.sql
 
 echo 'Stored procedure migrate_prospects_to_customers has been created' 
