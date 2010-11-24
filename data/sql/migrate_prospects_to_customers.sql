@@ -1,6 +1,5 @@
-DROP FUNCTION IF EXISTS migrate_prospects_to_customers;
-
-
+DROP PROCEDURE IF EXISTS migrate_prospects_to_customers;
+DELIMITER |
 CREATE  PROCEDURE `migrate_prospects_to_customers`(IN profileId INT)
 BEGIN
 	SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
@@ -10,10 +9,10 @@ company,
 FKiddialing_codefromcustomers,
 email,
 FKidgender,
-FKidcustomer_status,
 name,
 phone,
 password,
+FKidcustomer_status,
 password_hash,
 surname,
 created_at,
@@ -24,10 +23,10 @@ updated_at
 profile.FKiddialing_codefromprospects,
 profile.email,
 profile.FKidgenderfromprospect,
-10,
 profile.name,
 profile.phone,
 profile.password,
+10,
 profile.password_hash,
 profile.surname,
 now(),
@@ -44,13 +43,12 @@ SELECT FKidgeolocationfromprospect INTO @geolocationID from prospects WHERE idpr
 insert into customers_address_list (
 	FKidgeolocationfromaddresslist,
   FKidcustomersfromaddresslist,
-
   FKidaddress_type
 	) 
 	select	
 		profile.FKidgeolocationfromprospect,
 		@insertedId,
-		1   
+		1    
 		from prospects as profile
 		where profile.idprospects = profileId;
 
