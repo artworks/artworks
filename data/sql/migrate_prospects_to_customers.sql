@@ -1,3 +1,6 @@
+DROP FUNCTION IF EXISTS migrate_prospects_to_customers;
+
+
 CREATE  PROCEDURE `migrate_prospects_to_customers`(IN profileId INT)
 BEGIN
 	SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
