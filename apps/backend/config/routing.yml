@@ -1,3 +1,12 @@
+artwork_type:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                ArtworkType
+    module:               artworktype
+    prefix_path:          /artworktype
+    column:               idartwork_type
+    with_wildcard_routes: true
+
 artists:
   class: sfDoctrineRouteCollection
   options:

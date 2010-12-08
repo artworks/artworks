@@ -53,6 +53,7 @@ abstract class BaseDeliveryPricing extends sfDoctrineRecord
              'notnull' => false,
              'autoincrement' => false,
              'length' => 15,
+             'scale' => '2',
              ));
         $this->hasColumn('fkidcurrencyfromdelivery', 'integer', 4, array(
              'type' => 'integer',

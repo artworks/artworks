@@ -16,12 +16,12 @@ abstract class BaseArtworkStyleForm extends BaseFormDoctrine
   {
     $this->setWidgets(array(
       'idartwork_style' => new sfWidgetFormInputHidden(),
-      'label'           => new sfWidgetFormInputText(),
+      'name'            => new sfWidgetFormInputText(),
     ));
 
     $this->setValidators(array(
       'idartwork_style' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('idartwork_style')), 'empty_value' => $this->getObject()->get('idartwork_style'), 'required' => false)),
-      'label'           => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'name'            => new sfValidatorString(array('max_length' => 45, 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('artwork_style[%s]');

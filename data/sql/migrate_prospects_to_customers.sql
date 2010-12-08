@@ -2,6 +2,7 @@ DROP PROCEDURE IF EXISTS migrate_prospects_to_customers;
 DELIMITER |
 CREATE  PROCEDURE `migrate_prospects_to_customers`(IN profileId INT)
 BEGIN
+
 	SET SESSION TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 	START TRANSACTION;
 	insert into customers (
@@ -26,7 +27,7 @@ profile.FKidgenderfromprospect,
 profile.name,
 profile.phone,
 profile.password,
-10,
+1,
 profile.password_hash,
 profile.surname,
 now(),

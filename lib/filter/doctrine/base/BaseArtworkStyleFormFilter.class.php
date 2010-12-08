@@ -13,11 +13,11 @@ abstract class BaseArtworkStyleFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
-      'label'           => new sfWidgetFormFilterInput(),
+      'name'            => new sfWidgetFormFilterInput(),
     ));
 
     $this->setValidators(array(
-      'label'           => new sfValidatorPass(array('required' => false)),
+      'name'            => new sfValidatorPass(array('required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('artwork_style_filters[%s]');
@@ -38,7 +38,7 @@ abstract class BaseArtworkStyleFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'idartwork_style' => 'Number',
-      'label'           => 'Text',
+      'name'            => 'Text',
     );
   }
 }

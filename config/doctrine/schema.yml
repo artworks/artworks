@@ -136,14 +136,14 @@ Artworks:
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     created_at:
       type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
   relations:
     Artists:
@@ -191,20 +191,20 @@ ArtworksPrices:
       notnull: false
       autoincrement: false
     price:
-      type: decimal(15)
+      type: 'decimal(15, 2)'
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
   relations:
-    Currency:
-      local: fkidcurrencyfromartworks
-      foreign: idcurrency
-      type: one
     Artworks:
       local: fkidartworksfromprices
       foreign: idartworks
+      type: one
+    Currency:
+      local: fkidcurrencyfromartworks
+      foreign: idcurrency
       type: one
 Basket:
   connection: doctrine
@@ -453,23 +453,23 @@ Customers:
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     updated_at:
       type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
   relations:
-    CustomerStatus:
-      local: fkidcustomer_status
-      foreign: idcustomer_status
-      type: one
     DialingCodes:
       local: fkiddialing_codefromcustomers
       foreign: iddialing_code
+      type: one
+    CustomerStatus:
+      local: fkidcustomer_status
+      foreign: idcustomer_status
       type: one
     Gender:
       local: fkidgender
@@ -564,7 +564,7 @@ DeliveryPricing:
       primary: true
       autoincrement: true
     price:
-      type: decimal(15)
+      type: 'decimal(15, 2)'
       fixed: false
       unsigned: false
       primary: false
@@ -721,14 +721,14 @@ Geolocation:
       notnull: false
       autoincrement: false
     longitude:
-      type: float()
+      type: float(18)
       fixed: false
       unsigned: false
       primary: false
       notnull: false
       autoincrement: false
     lattitude:
-      type: float()
+      type: float(18)
       fixed: false
       unsigned: false
       primary: false
@@ -982,14 +982,14 @@ Prospects:
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
     updated_at:
       type: timestamp(25)
       fixed: false
       unsigned: false
       primary: false
-      notnull: false
+      notnull: true
       autoincrement: false
   relations:
     DialingCodes:

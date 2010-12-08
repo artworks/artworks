@@ -81,23 +81,23 @@ abstract class BaseGeolocation extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => '',
              ));
-        $this->hasColumn('longitude', 'float', null, array(
+        $this->hasColumn('longitude', 'float', 18, array(
              'type' => 'float',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
-             'length' => '',
+             'length' => 18,
              ));
-        $this->hasColumn('lattitude', 'float', null, array(
+        $this->hasColumn('lattitude', 'float', 18, array(
              'type' => 'float',
              'fixed' => 0,
              'unsigned' => false,
              'primary' => false,
              'notnull' => false,
              'autoincrement' => false,
-             'length' => '',
+             'length' => 18,
              ));
     }
 
