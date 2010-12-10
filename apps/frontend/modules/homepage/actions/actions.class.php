@@ -17,7 +17,8 @@ class homepageActions extends sfActions
 	 */
 	public function executeIndex(sfWebRequest $request)
 	{
-		
+$this->photos = Doctrine::getTable("Artworks")->findBy("fkidartwork_type", 1);
+$this->pictures =  Doctrine::getTable("Artworks")->findBy("fkidartwork_type", 2);
 		//$this->forward('default', 'module');
 		//$this->form = new SignInForm();
 	}
