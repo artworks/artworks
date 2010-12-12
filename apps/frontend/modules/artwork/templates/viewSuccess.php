@@ -11,6 +11,6 @@ price
 <?php  echo $artwork->getPrice(); ?>
 <br/><br/>
  
-<?php echo link_to1(__('add to selection'), "@artwork_add_to selection?idartworks=".$artwork->getIdartworks()."&bastket_status=1",array('id' => 'addToSelection'))?>
+<?php echo link_to1(__('add to selection'), "@artwork_add_to_selection?idartworks=".$artwork->getIdartworks()."&bastket_status=1",array('id' => 'addToSelection'))?>
 <br/>
 <?php echo link_to1(__('retour'), "@homepage")?>
