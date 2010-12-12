@@ -15,7 +15,7 @@ class sfRequestHostRoute extends sfRequestRoute
     {
       // apply the required host
       $protocol = $context['is_secure'] ? 'https' : 'http';
-      $url = $protocol.'://'.$this->requirements['sf_host'].$url;
+      $url = $protocol.'://'.$this->requirements['sf_host'].sfConfig::get('app_project_domain').$url;
     }
  
     return $url;

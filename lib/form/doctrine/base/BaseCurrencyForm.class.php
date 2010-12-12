@@ -17,11 +17,13 @@ abstract class BaseCurrencyForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'idcurrency' => new sfWidgetFormInputHidden(),
       'label'      => new sfWidgetFormInputText(),
+      'country'    => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Country'), 'add_empty' => true)),
     ));
 
     $this->setValidators(array(
       'idcurrency' => new sfValidatorChoice(array('choices' => array($this->getObject()->get('idcurrency')), 'empty_value' => $this->getObject()->get('idcurrency'), 'required' => false)),
       'label'      => new sfValidatorString(array('max_length' => 45, 'required' => false)),
+      'country'    => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Country'), 'required' => false)),
     ));
 
     $this->widgetSchema->setNameFormat('currency[%s]');

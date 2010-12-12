@@ -12,5 +12,7 @@ class ArtworksPricesForm extends BaseArtworksPricesForm
 {
   public function configure()
   {
+  	$this->widgetSchema['fkidartworksfromprices'] = new sfWidgetFormInputHidden ();		
+  	
   }
 }

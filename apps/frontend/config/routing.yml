@@ -34,6 +34,15 @@ homepage_logout:
   url:   /:sf_culture/logout
   param:  { module: homepage, action: logOut }
   
+artwork_view:
+  url:   /:sf_culture/artwork/:idartworks
+  class:  sfDoctrineRoute
+  options:  {model: Artworks, type: object}
+  param: { module: artwork, action: view }
+  
+artwork_add_to selection:
+  url:   /:sf_culture/artwork/addtoselection/:idartworks/:bastket_status
+  param: { module: artwork, action: addToSelection }
   
 homepage_send_credentials_confirmation:
   url:   /:sf_culture/send_credentials_confirmation

@@ -167,4 +167,15 @@ class Customers extends BaseCustomers
 
 		return $this->getPassword() == call_user_func_array($algorithm, array($this->getPasswordHash().$password));
 	}
+	
+	public function getMySelectionQuery($selection_type)
+	{
+		return Doctrine_Query::create()
+		->from('Basket b')
+		->innerJoin('b.Artworks a ON a.idartworks = b.fkidartworksfrombasket AND a.fkidartwork_type = ?',$selection_type )
+		->innerJoin('a.ArtworksPrices ap ON a.idartworks = ap.fkidartworksfromprices' )
+		->where('b.fkidcustomersfrombasket = ?',$this->getIdcustomers())
+		->andWhere('b.fkidbasket_status = ?', 1);
+
+	}
 }

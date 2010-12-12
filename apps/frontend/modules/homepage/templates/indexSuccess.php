@@ -1,16 +1,17 @@
-<?php echo __('You are logged in')?><br/><br/>
-<?php echo link_to1(__('My profile'),'http://profile.artworks.com/dev.php/fr/')?><br/>
-<?php echo link_to1(__('logout'), "@homepage_logout")?>
-
+<?php include_component("components","menu")?>
+<?php include_component("components","basket")?>
+<br/><br/>
+<fieldset>
 <h1>Artworks</h1>
 
 
 <h2>Photos</h2>
 <?php foreach ($photos as $photo):?>
-<?php echo $photo->getDescription()?><br/>
+<?php echo link_to($photo->getDescription(),'@artwork_view?idartworks='.$photo->getIdartworks()) ?><br/>
 <?php endforeach; ?>
 
 <h2>Pictures</h2>
 <?php foreach ($pictures as $picture):?>
-<?php echo $picture->getDescription()?><br/>
+<?php echo link_to($picture->getDescription(),'@artwork_view?idartworks='.$picture->getIdartworks()) ?><br/>
 <?php endforeach; ?>
+</fieldset>

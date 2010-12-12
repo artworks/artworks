@@ -10,3 +10,19 @@ sfGlobalBasicActions_generated_js:
     sf_culture: (?:fr|en) 
     sf_method: get
     sf_format: js
+
+sfGlobalPlugin_artwork_view:
+  class:  sfRequestHostRoute
+  url:      /:sf_culture/artwork/:idartworks
+  param: { module: artwork, action: view }
+  requirements:
+    sf_host: www
+    sf_method: delete
+    
+
+sfGlobalPlugin_myselection_delete_from_selection:
+  class:  sfRequestHostRoute
+  url:      /:sf_culture/myselection/delete/:idartworks/:basket_status
+  requirements:
+    sf_host: profile
+    sf_method: delete

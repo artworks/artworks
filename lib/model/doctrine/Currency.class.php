@@ -13,4 +13,9 @@
 class Currency extends BaseCurrency
 {
 
+	public function __toString()
+	{
+		return $this->getLabel();
+	}
+	
 }

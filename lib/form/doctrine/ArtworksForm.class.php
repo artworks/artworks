@@ -10,10 +10,28 @@
  */
 class ArtworksForm extends BaseArtworksForm
 {
-  public function configure()
-  {
-  	 unset($this['created_at'], $this['updated_at'], $this['idartworks']);
-  }
-  
+	public function configure()
+	{
+		unset($this['created_at'], $this['updated_at'], $this['idartworks']);
+		$this->embedRelation('ArtworksPrices');
+
+		if($this->object->idartworks && !count($this->object->getArtworksPrices()) ) {
+			$artworksPricesForm  = new ArtworksPricesForm();
+			$artworksPricesForm->setDefault('fkidartworksfromprices', $this->object->idartworks);
+			$this->embedForm('new',$artworksPricesForm );
+		}
+
+		   $this->widgetSchema['photo'] = new sfWidgetFormInputFileEditable(array(
+      'label'     => 'Company logo',
+      'file_src'  => sfConfig::get( 'sf_web_dir' ).DIRECTORY_SEPARATOR.ImagesTools::getGalleryPath( $this->getObject()->getIdartworks() ).$this->getObject()->getPhoto(),
+      'is_image'  => true,
+      'edit_mode' => !$this->isNew(),
+      'template'  => '<div>%file%<br />%input%<br />%delete% %delete_label%</div>',
+    ));
+ 
+    $this->validatorSchema['photo_delete'] = new sfValidatorPass();
+		
+	}
+
 
 }

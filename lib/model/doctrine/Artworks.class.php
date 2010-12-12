@@ -17,4 +17,9 @@ class Artworks extends BaseArtworks
 		parent::setUp();
 		$this->actAs('Timestampable');
 	}
+	
+	public function getPrice()
+	{
+		return  @$this->getArtworksPrices()->end()->getPrice().' '.@$this->getArtworksPrices()->end()->getCurrency()->getLabel();	
+	}
 }

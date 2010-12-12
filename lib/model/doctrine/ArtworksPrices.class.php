@@ -12,5 +12,9 @@
  */
 class ArtworksPrices extends BaseArtworksPrices
 {
-
+	public function __toString()
+	{
+		return $this->getIdartworksPrices();
+	}
+	
 }

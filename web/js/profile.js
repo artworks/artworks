@@ -68,6 +68,23 @@ $(document).ready(function () {
              }
          });
 	 });
+	 
+	 $('.delete-from-selection').click(function (e) {
+		 form = $(this).closest("form");
+		 e.preventDefault();
+         $.ajax({
+             type: "POST",
+             url: this.href,
+             dataType: 'json',
+             success: function (data) {
+            	 alert('Operation successful');
+            	
+             },
+             error: function (data) {
+                 alert('Un probleme interne au site est survenu, veuilez retenter l\'opération plus tard');
+             }
+         });
+	 });
 
 
 });

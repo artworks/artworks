@@ -43,4 +43,22 @@ $(document).ready(function () {
         }
     });   
 
+    $('#addToSelection').click(function (e) {
+    	e.preventDefault();
+    	   $.ajax({
+               type: "GET",
+               url: this.href,
+               dataType: 'json',
+               success: function (data) {
+                   if (data.status==="success") {
+                	   alert(i18n_generated_artwork_selected); 
+                   }
+                   else if(data.status==="allready_selected") {
+                	   alert(i18n_generated_artwork_allready_selected);                	   
+                   }
+               }
+    	   });
+    });
+    
+    
 });

@@ -9,15 +9,21 @@ Doctrine_Manager::getInstance()->bindComponent('Currency', 'doctrine');
  * 
  * @property integer $idcurrency
  * @property string $label
+ * @property integer $country
+ * @property Country $Country
  * @property Doctrine_Collection $ArtworksPrices
  * @property Doctrine_Collection $DeliveryPricing
  * 
  * @method integer             getIdcurrency()      Returns the current record's "idcurrency" value
  * @method string              getLabel()           Returns the current record's "label" value
+ * @method integer             getCountry()         Returns the current record's "country" value
+ * @method Country             getCountry()         Returns the current record's "Country" value
  * @method Doctrine_Collection getArtworksPrices()  Returns the current record's "ArtworksPrices" collection
  * @method Doctrine_Collection getDeliveryPricing() Returns the current record's "DeliveryPricing" collection
  * @method Currency            setIdcurrency()      Sets the current record's "idcurrency" value
  * @method Currency            setLabel()           Sets the current record's "label" value
+ * @method Currency            setCountry()         Sets the current record's "country" value
+ * @method Currency            setCountry()         Sets the current record's "Country" value
  * @method Currency            setArtworksPrices()  Sets the current record's "ArtworksPrices" collection
  * @method Currency            setDeliveryPricing() Sets the current record's "DeliveryPricing" collection
  * 
@@ -48,11 +54,24 @@ abstract class BaseCurrency extends sfDoctrineRecord
              'autoincrement' => false,
              'length' => 45,
              ));
+        $this->hasColumn('country', 'integer', 4, array(
+             'type' => 'integer',
+             'fixed' => 0,
+             'unsigned' => false,
+             'primary' => false,
+             'notnull' => false,
+             'autoincrement' => false,
+             'length' => 4,
+             ));
     }
 
     public function setUp()
     {
         parent::setUp();
+        $this->hasOne('Country', array(
+             'local' => 'country',
+             'foreign' => 'idcountry'));
+
         $this->hasMany('ArtworksPrices', array(
              'local' => 'idcurrency',
              'foreign' => 'fkidcurrencyfromartworks'));

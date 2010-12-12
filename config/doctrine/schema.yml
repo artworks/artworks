@@ -312,6 +312,10 @@ Country:
       local: fkiddelivery_areas
       foreign: iddelivery_areas
       type: one
+    Currency:
+      local: idcountry
+      foreign: country
+      type: many
     DialingCodes:
       local: idcountry
       foreign: fkidcountryfromdialingcodes
@@ -337,7 +341,18 @@ Currency:
       primary: false
       notnull: false
       autoincrement: false
+    country:
+      type: integer(4)
+      fixed: false
+      unsigned: false
+      primary: false
+      notnull: false
+      autoincrement: false
   relations:
+    Country:
+      local: country
+      foreign: idcountry
+      type: one
     ArtworksPrices:
       local: idcurrency
       foreign: fkidcurrencyfromartworks

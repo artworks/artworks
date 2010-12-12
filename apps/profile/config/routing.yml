@@ -32,6 +32,14 @@ myprofile_add_address:
   param:  { module: myprofile, action: addAddress }
   requirements: 
    sf_method: put
+
+myselection_list:
+  url:   /:sf_culture/myselection/list
+  param:  { module: myselection, action: list }
+  
+myselection_delete_from_selection:
+  url:   /:sf_culture/myselection/delete/:idartworks/:basket_status
+  param:  { module: myselection, action: deleteFromMySelection }
   
 myprofile_logout:
   url:   /:sf_culture/logout
